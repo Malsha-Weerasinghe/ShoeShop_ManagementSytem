@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Item Information</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("assets/stockists-mobile.webp");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      font-weight: bold;
+    }
+    input, select {
+      width: calc(100% - 22px);
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      /*width: 100%;*/
+      padding: 10px;
+      background-color: #0eba33;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #093b11;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #DAA520;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Item Information Form</h2>
+  <form id="itemForm">
+    <label for="itemCode">Item Code</label>
+    <input type="text" id="itemCode" name="itemCode" required>
+
+    <label for="itemDesc">Item Description</label>
+    <input type="text" id="itemDesc" name="itemDesc" required>
+
+    <label for="quantity">Quantity</label>
+    <input type="number" id="quantity" name="quantity" required>
+
+    <label for="itemPicture">Item Picture (Base64)</label>
+    <input type="text" id="itemPicture" name="itemPicture">
+
+    <label for="category">Category</label>
+    <input type="text" id="category" name="category">
+
+    <label for="size">Size</label>
+    <input type="number" id="size" name="size">
+
+    <label for="supplierCode">Supplier Code</label>
+    <input type="text" id="supplierCode" name="supplierCode">
+
+    <label for="supplierName">Supplier Name</label>
+    <input type="text" id="supplierName" name="supplierName">
+
+    <label for="unitPriceSale">Unit Price (Sale)</label>
+    <input type="number" id="unitPriceSale" name="unitPriceSale" step="0.01">
+
+    <label for="unitPriceBuy">Unit Price (Buy)</label>
+    <input type="number" id="unitPriceBuy" name="unitPriceBuy" step="0.01">
+
+    <label for="expectedProfit">Expected Profit</label>
+    <input type="number" id="expectedProfit" name="expectedProfit" step="0.01">
+
+    <label for="profitMargin">Profit Margin (%)</label>
+    <input type="number" id="profitMargin" name="profitMargin" step="0.01">
+
+    <label for="status">Status</label>
+    <input type="text" id="status" name="status">
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <h2>Item Information Table</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Item Code</th>
+      <th>Item Description</th>
+      <th>Quantity</th>
+      <th>Item Picture</th>
+      <th>Category</th>
+      <th>Size</th>
+      <th>Supplier Code</th>
+      <th>Supplier Name</th>
+      <th>Unit Price (Sale)</th>
+      <th>Unit Price (Buy)</th>
+      <th>Expected Profit</th>
+      <th>Profit Margin (%)</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody id="itemTableBody">
+    <!-- Item data will be populated here -->
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

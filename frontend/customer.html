@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Information Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("assets/stockists-mobile.webp");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      padding-right: 60px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #DAA520;
+      color: #fff;
+    }
+    .form-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      font-weight: bold;
+    }
+    input, select {
+      width: calc(100% - 22px);
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      /*width: 100%;*/
+      padding: 10px;
+      background-color: #0eba33;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #093b11;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Customer Information Form</h2>
+  <div class="form-container">
+    <form id="customerForm">
+      <label for="customerId">Customer ID</label>
+      <input type="text" id="customerId" name="customerId" required>
+
+      <label for="customerName">Customer Name</label>
+      <input type="text" id="customerName" name="customerName" required>
+
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="joinDate">Join Date</label>
+      <input type="date" id="joinDate" name="joinDate" required>
+
+      <label for="loyaltyLevel">Loyalty Level</label>
+      <select id="loyaltyLevel" name="loyaltyLevel">
+        <option value="Gold">Gold</option>
+        <option value="Silver">Silver</option>
+        <option value="Bronze">Bronze</option>
+        <option value="New">New</option>
+      </select>
+
+      <label for="totalPoints">Total Points</label>
+      <input type="number" id="totalPoints" name="totalPoints" required>
+
+      <label for="dob">Date of Birth</label>
+      <input type="date" id="dob" name="dob" required>
+
+      <label for="addressLine01">Address Line 01</label>
+      <input type="text" id="addressLine01" name="addressLine01" required>
+
+      <label for="addressLine02">Address Line 02</label>
+      <input type="text" id="addressLine02" name="addressLine02">
+
+      <label for="addressLine03">Address Line 03</label>
+      <input type="text" id="addressLine03" name="addressLine03">
+
+      <label for="addressLine04">Address Line 04</label>
+      <input type="text" id="addressLine04" name="addressLine04">
+
+      <label for="addressLine05">Address Line 05</label>
+      <input type="text" id="addressLine05" name="addressLine05">
+
+      <label for="contactNo">Contact No.</label>
+      <input type="tel" id="contactNo" name="contactNo" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="recentPurchaseDateTime">Recent Purchase Date and Time</label>
+      <input type="datetime-local" id="recentPurchaseDateTime" name="recentPurchaseDateTime" required>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <h2>Customer Information Table</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Customer ID</th>
+      <th>Customer Name</th>
+      <th>Gender</th>
+      <th>Join Date</th>
+      <th>Loyalty Level</th>
+      <th>Total Points</th>
+      <th>Date of Birth</th>
+      <th>Address Line 01</th>
+      <th>Address Line 02</th>
+      <th>Address Line 03</th>
+      <th>Address Line 04</th>
+      <th>Address Line 05</th>
+      <th>Contact No.</th>
+      <th>Email</th>
+      <th>Recent Purchase Date and Time</th>
+    </tr>
+    </thead>
+    <tbody id="customerTableBody">
+    <!-- Customer data will be populated here -->
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

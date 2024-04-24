@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("assets/stockists-mobile.webp");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      font-weight: bold;
+    }
+    input, select {
+      width: calc(100% - 22px);
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      /*width: 100%;*/
+      padding: 10px;
+      background-color: #0eba33;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #093b11;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #DAA520;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Sales Information Form</h2>
+  <form id="salesForm">
+
+    <label for="totalSales">Total Sales</label>
+    <input type="number" id="totalSales" name="totalSales" step="0.01" readonly>
+
+    <label for="totalProfit">Total Profit</label>
+    <input type="number" id="totalProfit" name="totalProfit" step="0.01" readonly>
+
+    <label for="mostSaleItem">Most Sale Item</label>
+    <input type="text" id="mostSaleItem" name="mostSaleItem" readonly>
+
+    <label for="mostSaleItemPicture">Most Sale Item Picture (Base64)</label>
+    <input type="text" id="mostSaleItemPicture" name="mostSaleItemPicture" readonly>
+
+    <label for="mostSaleItemQty">Most Sale Item Quantity</label>
+    <input type="number" id="mostSaleItemQty" name="mostSaleItemQty" readonly>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <h2>Sales Information Table</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Total Sales</th>
+      <th>Total Profit</th>
+      <th>Most Sale Item</th>
+      <th>Most Sale Item Picture</th>
+      <th>Most Sale Item Quantity</th>
+    </tr>
+    </thead>
+    <tbody id="salesTableBody">
+    <!-- Sales data will be populated here -->
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

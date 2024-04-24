@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sale Service</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("assets/stockists-mobile.webp");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      /*width: 100%;*/
+      padding: 10px;
+      background-color: #0eba33;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #093b11;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #DAA520;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Item Information Form</h2>
+  <form id="itemForm">
+    <label for="itemCode">Item Code</label>
+    <input type="text" id="itemCode" name="itemCode" required>
+
+    <label for="orderNo">Order No.</label>
+    <input type="text" id="orderNo" name="orderNo" required>
+
+    <label for="customerName">Customer Name</label>
+    <input type="text" id="customerName" name="customerName">
+
+    <label for="itemDesc">Item Description</label>
+    <input type="text" id="itemDesc" name="itemDesc" required>
+
+    <label for="size">Size</label>
+    <input type="number" id="size" name="size" required>
+
+    <label for="unitPrice">Unit Price</label>
+    <input type="number" id="unitPrice" name="unitPrice" required>
+
+    <label for="itemQty">Item Quantity</label>
+    <input type="number" id="itemQty" name="itemQty" required>
+
+    <label for="totalPrice">Total Price</label>
+    <input type="number" id="totalPrice" name="totalPrice" required>
+
+    <label for="purchaseDate">Purchase Date</label>
+    <input type="datetime-local" id="purchaseDate" name="purchaseDate" required>
+
+    <label for="paymentMethod">Payment Method</label>
+    <select id="paymentMethod" name="paymentMethod" required>
+      <option value="">Select Payment Method</option>
+      <option value="Cash">Cash</option>
+      <option value="Card">Card</option>
+    </select>
+
+    <label for="addedPoints">Added Points</label>
+    <input type="number" id="addedPoints" name="addedPoints">
+
+    <label for="cashierName">Cashier Name</label>
+    <input type="text" id="cashierName" name="cashierName" required>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <h2>Item Information Table</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Item Code</th>
+      <th>Order No.</th>
+      <th>Customer Name</th>
+      <th>Item Description</th>
+      <th>Size</th>
+      <th>Unit Price</th>
+      <th>Item Quantity</th>
+      <th>Total Price</th>
+      <th>Purchase Date</th>
+      <th>Payment Method</th>
+      <th>Added Points</th>
+      <th>Cashier Name</th>
+    </tr>
+    </thead>
+    <tbody id="itemTableBody">
+    <!-- Item data will be populated here -->
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
+``
