@@ -1,6 +1,7 @@
 package lk.ijse.shoeShop;
 
 import lk.ijse.shoeShop.config.WebAppConfig;
+import lk.ijse.shoeShop.config.WebRootConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
