@@ -22,11 +22,12 @@ public class UserServiceImpl implements UserService {
         return username -> userRepo.findByEmail(username)
                 .orElseThrow(() -> new
                         UsernameNotFoundException(
-                                "user not found"));
+                        "user not found"));
     }
 
     @Override
     public void Save(UserDTO userDTO) {
         userRepo.save(mapper.map(userDTO, UserEntity.class));
     }
+
 }
