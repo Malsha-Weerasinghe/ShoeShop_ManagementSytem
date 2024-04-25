@@ -2,6 +2,7 @@ package lk.ijse.shoeShop.entity;
 
 import jakarta.persistence.*;
 
+import lk.ijse.shoeShop.util.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

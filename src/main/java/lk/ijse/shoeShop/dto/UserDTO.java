@@ -1,6 +1,7 @@
 package lk.ijse.shoeShop.dto;
 
 
+import lk.ijse.shoeShop.util.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
