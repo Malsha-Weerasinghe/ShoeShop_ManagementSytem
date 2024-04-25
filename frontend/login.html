@@ -23,7 +23,7 @@
             border: 1px solid #ccc;
             border-radius: 10px;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8); /* Reduced opacity */
+            background-color: rgba(0, 0, 0, 0.5); /* Reduced opacity */
         }
         .login-btn {
             border-radius: 20px;
@@ -36,6 +36,20 @@
             border-color: goldenrod;
             margin-left: 50%;
         }
+        h2 {
+            color: white;
+        }
+        label {
+            color: white;
+        }
+        .modal-body{
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+
     </style>
 </head>
 <body>
@@ -43,7 +57,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="login-container">
-                <h2 class="text-center mb-4">Log in</h2>
+                <h2 class="text-center mb-4 ">LogIn</h2>
                 <!-- User Form -->
                 <form id="UserForm">
                     <div class="form-group">
@@ -76,12 +90,12 @@
                 <!-- Signup Form -->
                 <form id="signup-form">
                     <div class="form-group">
-                        <label for="signup-username">Username</label>
-                        <input type="text" class="form-control" id="signup-username" required>
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="newUsername" required>
                     </div>
                     <div class="form-group">
-                        <label for="signup-password">Password</label>
-                        <input type="password" class="form-control" id="signup-password" required>
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="newPassword" required>
                     </div>
                     <div class="form-group">
                         <label for="accessRole">Access Role</label>
@@ -101,5 +115,32 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    document.getElementById('signup-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Get form data
+        const formData = {
+            username: document.getElementById('newUsername').value,
+            password: document.getElementById('newPassword').value
+        };
+
+        // Send data to backend
+        fetch('/api/v1/auth/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                // Handle response from backend
+                console.log(data);
+            })
+            .catch(error => console.error('Error:', error));
+    });
+
+</script>
 </body>
 </html>
