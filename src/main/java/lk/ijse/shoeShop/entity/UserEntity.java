@@ -1,10 +1,16 @@
-/*
 package lk.ijse.shoeShop.entity;
 
 import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.HashSet;
 
 @Data
 @AllArgsConstructor
@@ -12,11 +18,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "user")
 public class UserEntity implements UserDetails {
-    */
-/*@Id
-    private String id;
-    private String firstName;
-    private String lastName;
+    @Id
     @Column(unique = true)
     private String email;
     private String password;
@@ -54,7 +56,5 @@ public class UserEntity implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }*//*
-
+    }
 }
-*/
