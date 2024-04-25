@@ -1,9 +1,8 @@
 package lk.ijse.shoeShop.controller;
 
-import lk.ijse.gdse66.springbootwithjwt.auth.request.SignInRequest;
-import lk.ijse.gdse66.springbootwithjwt.auth.request.SignUpRequest;
-import lk.ijse.gdse66.springbootwithjwt.auth.response.JwtAuthResponse;
-import lk.ijse.gdse66.springbootwithjwt.service.AuthenticationService;
+import lk.ijse.shoeShop.auth.request.SignInRequest;
+import lk.ijse.shoeShop.auth.request.SignUpRequest;
+import lk.ijse.shoeShop.auth.response.JwtAuthResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
