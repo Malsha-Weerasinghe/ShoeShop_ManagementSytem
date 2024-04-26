@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+Built-By: MALSHA
+Build-Jdk: version 17.0.10
+Implementation-Title: shoeShop
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: lk.ijse.gdse66
+Main-Class: ${start-class}
+

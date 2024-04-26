@@ -15,9 +15,9 @@
 
         body {
             font-family: Arial, sans-serif;
-            background-image: url("assets/interior-design-for-shoe-shop.jpg");
+            background-image: url("assets/images/interior-design-for-shoe-shop.jpg");
             background-size: cover;
-            background-repeat: no-repeat;
+            overflow: hidden;
             background-attachment: fixed;
             margin: 0;
             padding: 0;
@@ -32,7 +32,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Adjust the alpha value (0-1) for desired opacity */
+            background-color: rgba(0, 0, 0, 0.7); /* Adjust the alpha value (0-1) for desired opacity */
             z-index: -1; /* Ensure the overlay is behind the content */
         }
 
@@ -49,6 +49,7 @@
             justify-content: center;
             align-items: center;
             gap: 50px;
+            cursor: pointer;
         }
 
        /* .picture {
@@ -94,45 +95,84 @@
             font-size: 14px; /* Adjust font size */
         }
 
+        .backBtn {
+            position: fixed; /* Set position to fixed */
+            top: 20px; /* Adjust top position */
+            left: 20px; /* Adjust left position */
+            width: 50px;
+            height: auto;
+            border: 2px solid #090808;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease; /* Add transition effect */
+        }
+
+        .backBtn:hover {
+            transform: scale(1.1); /* Increase size on hover */
+        }
+
+        .backBtn img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
     </style>
 </head>
 <body>
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-12">
+            <div class="backBtn" onclick="goBack()">
+                <img src="assets/images/back.png" alt="Image">
+            </div>
             <div class="picture-container">
-                <div class="picture">
-                    <img src="assets/login.png" alt="Image 1">
+                <div class="picture" onclick="navigateTo('login.html')">
+                    <img src="assets/images/user.png" alt="Image 1">
                     <div class="image-text">Users</div>
                 </div>
-                <div class="picture">
-                    <img src="assets/customer.png" alt="Image 2">
+                <div class="picture" onclick="navigateTo('customer.html')">
+                    <img src="assets/images/customer.png" alt="Image 2">
                     <div class="image-text">Customers</div>
                 </div>
-                <div class="picture">
-                    <img src="assets/employee.png" alt="Image 3">
+                <div class="picture" onclick="navigateTo('employee.html')">
+                    <img src="assets/images/employee.png" alt="Image 3">
                     <div class="image-text">Employees</div>
                 </div>
-                <div class="picture">
-                    <img src="assets/supplier.png" alt="Image 4">
+                <div class="picture" onclick="navigateTo('supplier.html')">
+                    <img src="assets/images/supplier.png" alt="Image 4">
                     <div class="image-text">Suppliers</div>
                 </div>
-                <div class="picture">
-                    <img src="assets/sales.png" alt="Image 5">
+                <div class="picture" onclick="navigateTo('sale.html')">
+                    <img src="assets/images/sales.png" alt="Image 5">
                     <div class="image-text">Sales</div>
                 </div>
-                <div class="picture">
-                    <img src="assets/inventory.png" alt="Image 6">
+                <div class="picture" onclick="navigateTo('inventory.html')">
+                    <img src="assets/images/inventory.png" alt="Image 6">
                     <div class="image-text">Inventory</div>
                 </div>
-                <div class="picture">
-                    <img src="assets/admin.png" alt="Image 7">
+                <div class="picture" onclick="navigateTo('admin.html')">
+                    <img src="assets/images/admin.png" alt="Image 7">
                     <div class="image-text">Admin Panel</div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    function navigateTo(page) {
+        window.location.href = page;
+    }
+    function goBack() {
+        window.location.href = "home.html";
+    }
+</script>
 </body>
 
 </html>
