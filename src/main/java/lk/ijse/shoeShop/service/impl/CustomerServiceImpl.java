@@ -1,9 +1,9 @@
 package lk.ijse.shoeShop.service.impl;
 
-import lk.ijse.gdse66.springbootwithjwt.dto.CustomerDTO;
-import lk.ijse.gdse66.springbootwithjwt.entity.CustomerEntity;
-import lk.ijse.gdse66.springbootwithjwt.repository.CustomerRepo;
-import lk.ijse.gdse66.springbootwithjwt.service.CustomerService;
+import lk.ijse.shoeShop.dto.CustomerDTO;
+import lk.ijse.shoeShop.entity.CustomerEntity;
+import lk.ijse.shoeShop.repository.CustomerRepo;
+import lk.ijse.shoeShop.service.CustomerService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,7 +35,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO saveCustomer(CustomerDTO customerDTO) {
-        customerDTO.setId(UUID.randomUUID().toString());
+        customerDTO.setCustomerCode(UUID.randomUUID().toString());
         return mapper.map(customerRepo.save(mapper.map(
                 customerDTO, CustomerEntity.class)), CustomerDTO.class);
     }
