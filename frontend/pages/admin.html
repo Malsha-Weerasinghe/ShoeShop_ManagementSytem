@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sale Service</title>
+  <title>Admin Panel</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-image: url("assets/images/stockists-mobile.webp");
+      background-image: url("../assets/images/stockists-mobile.webp");
       background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
@@ -24,7 +24,7 @@
       z-index: -1; /* Ensure the overlay is behind the content */
     }
     .container {
-      max-width: 600px;
+      max-width: 800px;
       margin: 0 auto;
     }
     h2 {
@@ -41,7 +41,7 @@
       font-weight: bold;
     }
     input, select {
-      width: 100%;
+      width: calc(100% - 22px);
       padding: 8px;
       margin-bottom: 15px;
       border: 1px solid #ccc;
@@ -103,74 +103,43 @@
 </head>
 <body>
 <div class="container">
-  <h2>Item Information Form</h2>
+  <h2>Sales Information Form</h2>
   <div class="backBtn" onclick="goBack()">
-    <img src="assets/images/back.png" alt="Image">
+    <img src="../assets/images/back.png" alt="Image">
   </div>
-  <form id="itemForm">
-    <label for="itemCode">Item Code</label>
-    <input type="text" id="itemCode" name="itemCode" required>
+  <form id="salesForm">
 
-    <label for="orderNo">Order No.</label>
-    <input type="text" id="orderNo" name="orderNo" required>
+    <label for="totalSales">Total Sales</label>
+    <input type="number" id="totalSales" name="totalSales" step="0.01" readonly>
 
-    <label for="customerName">Customer Name</label>
-    <input type="text" id="customerName" name="customerName">
+    <label for="totalProfit">Total Profit</label>
+    <input type="number" id="totalProfit" name="totalProfit" step="0.01" readonly>
 
-    <label for="itemDesc">Item Description</label>
-    <input type="text" id="itemDesc" name="itemDesc" required>
+    <label for="mostSaleItem">Most Sale Item</label>
+    <input type="text" id="mostSaleItem" name="mostSaleItem" readonly>
 
-    <label for="size">Size</label>
-    <input type="number" id="size" name="size" required>
+    <label for="mostSaleItemPicture">Most Sale Item Picture (Base64)</label>
+    <input type="text" id="mostSaleItemPicture" name="mostSaleItemPicture" readonly>
 
-    <label for="unitPrice">Unit Price</label>
-    <input type="number" id="unitPrice" name="unitPrice" required>
-
-    <label for="itemQty">Item Quantity</label>
-    <input type="number" id="itemQty" name="itemQty" required>
-
-    <label for="totalPrice">Total Price</label>
-    <input type="number" id="totalPrice" name="totalPrice" required>
-
-    <label for="purchaseDate">Purchase Date</label>
-    <input type="datetime-local" id="purchaseDate" name="purchaseDate" required>
-
-    <label for="paymentMethod">Payment Method</label>
-    <select id="paymentMethod" name="paymentMethod" required>
-      <option value="">Select Payment Method</option>
-      <option value="Cash">Cash</option>
-      <option value="Card">Card</option>
-    </select>
-
-    <label for="addedPoints">Added Points</label>
-    <input type="number" id="addedPoints" name="addedPoints">
-
-    <label for="cashierName">Cashier Name</label>
-    <input type="text" id="cashierName" name="cashierName" required>
+    <label for="mostSaleItemQty">Most Sale Item Quantity</label>
+    <input type="number" id="mostSaleItemQty" name="mostSaleItemQty" readonly>
 
     <button type="submit">Submit</button>
   </form>
 
-  <h2>Item Information Table</h2>
+  <h2>Sales Information Table</h2>
   <table>
     <thead>
     <tr>
-      <th>Item Code</th>
-      <th>Order No.</th>
-      <th>Customer Name</th>
-      <th>Item Description</th>
-      <th>Size</th>
-      <th>Unit Price</th>
-      <th>Item Quantity</th>
-      <th>Total Price</th>
-      <th>Purchase Date</th>
-      <th>Payment Method</th>
-      <th>Added Points</th>
-      <th>Cashier Name</th>
+      <th>Total Sales</th>
+      <th>Total Profit</th>
+      <th>Most Sale Item</th>
+      <th>Most Sale Item Picture</th>
+      <th>Most Sale Item Quantity</th>
     </tr>
     </thead>
-    <tbody id="itemTableBody">
-    <!-- Item data will be populated here -->
+    <tbody id="salesTableBody">
+    <!-- Sales data will be populated here -->
     </tbody>
   </table>
 </div>
@@ -182,6 +151,6 @@
     window.history.back();
   }
 </script>
+
 </body>
 </html>
-``

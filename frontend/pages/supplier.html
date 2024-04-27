@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Information</title>
+    <title>Supplier Information</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url("assets/images/stockists-mobile.webp");
+            background-image: url("../assets/images/stockists-mobile.webp");
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -24,30 +24,12 @@
             z-index: -1; /* Ensure the overlay is behind the content */
         }
         .container {
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto;
         }
         h2 {
             text-align: center;
             margin-bottom: 20px;
-            color: white;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-            border-left:0px;
-        }
-        table, th, td {
-            border: 1px solid #ccc;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: #DAA520;
-            color: #fff;
         }
         form {
             background-color: #fff;
@@ -59,7 +41,7 @@
             font-weight: bold;
         }
         input, select {
-            width: calc(100% - 22px);
+            width: 100%;
             padding: 8px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
@@ -77,6 +59,22 @@
         }
         button:hover {
             background-color: #093b11;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #DAA520;
+            color: #fff;
         }
         .backBtn {
             position: fixed; /* Set position to fixed */
@@ -105,50 +103,26 @@
 </head>
 <body>
 <div class="container">
-    <h2>Employee Information Form</h2>
+    <h2>Supplier Information Form</h2>
     <div class="backBtn" onclick="goBack()">
-        <img src="assets/images/back.png" alt="Image">
+        <img src="../assets/images/back.png" alt="Image">
     </div>
-    <form id="employeeForm">
-        <label for="employeeCode">Employee Code</label>
-        <input type="text" id="employeeCode" name="employeeCode" required>
+    <form id="supplierForm">
+        <label for="supplierCode">Supplier Code</label>
+        <input type="text" id="supplierCode" name="supplierCode" required>
 
-        <label for="employeeName">Employee Name</label>
-        <input type="text" id="employeeName" name="employeeName" required>
+        <label for="supplierName">Supplier Name</label>
+        <input type="text" id="supplierName" name="supplierName" required>
 
-        <label for="employeeProfilePic">Profile Picture (Base64)</label>
-        <input type="text" id="employeeProfilePic" name="employeeProfilePic">
-
-        <label for="gender">Gender</label>
-        <select id="gender" name="gender">
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
+        <label for="category">Category</label>
+        <select id="category" name="category" required>
+            <option value="">Select Category</option>
+            <option value="International">International</option>
+            <option value="Local">Local</option>
         </select>
-
-        <label for="status">Status</label>
-        <input type="text" id="status" name="status">
-
-        <label for="designation">Designation</label>
-        <input type="text" id="designation" name="designation">
-
-        <label for="accessRole">Access Role</label>
-        <select id="accessRole" name="accessRole">
-            <option value="ADMIN">ADMIN</option>
-            <option value="USER">USER</option>
-        </select>
-
-        <label for="dob">Date of Birth</label>
-        <input type="date" id="dob" name="dob">
-
-        <label for="dateOfJoin">Date of Join</label>
-        <input type="date" id="dateOfJoin" name="dateOfJoin">
-
-        <label for="attachedBranch">Attached Branch</label>
-        <input type="text" id="attachedBranch" name="attachedBranch">
 
         <label for="addressLine01">Address Line 01</label>
-        <input type="text" id="addressLine01" name="addressLine01">
+        <input type="text" id="addressLine01" name="addressLine01" required>
 
         <label for="addressLine02">Address Line 02</label>
         <input type="text" id="addressLine02" name="addressLine02">
@@ -162,47 +136,41 @@
         <label for="addressLine05">Address Line 05</label>
         <input type="text" id="addressLine05" name="addressLine05">
 
-        <label for="contactNo">Contact No.</label>
-        <input type="tel" id="contactNo" name="contactNo">
+        <label for="addressLine06">Address Line 06</label>
+        <input type="text" id="addressLine06" name="addressLine06">
+
+        <label for="contactNo1">Contact No. 1</label>
+        <input type="tel" id="contactNo1" name="contactNo1" required>
+
+        <label for="contactNo2">Contact No. 2</label>
+        <input type="tel" id="contactNo2" name="contactNo2">
 
         <label for="email">Email</label>
-        <input type="email" id="email" name="email">
-
-        <label for="emergencyContactPerson">Emergency Contact Person</label>
-        <input type="text" id="emergencyContactPerson" name="emergencyContactPerson">
-
-        <label for="emergencyContact">Emergency Contact</label>
-        <input type="tel" id="emergencyContact" name="emergencyContact">
+        <input type="email" id="email" name="email" required>
 
         <button type="submit">Submit</button>
     </form>
 
-    <h2>Employee Information Table</h2>
+    <h2>Supplier Information Table</h2>
     <table>
         <thead>
         <tr>
-            <th>Employee Code</th>
-            <th>Employee Name</th>
-            <th>Gender</th>
-            <th>Status</th>
-            <th>Designation</th>
-            <th>Access Role</th>
-            <th>Date of Birth</th>
-            <th>Date of Join</th>
-            <th>Attached Branch</th>
+            <th>Supplier Code</th>
+            <th>Supplier Name</th>
+            <th>Category</th>
             <th>Address Line 01</th>
             <th>Address Line 02</th>
             <th>Address Line 03</th>
             <th>Address Line 04</th>
             <th>Address Line 05</th>
-            <th>Contact No.</th>
+            <th>Address Line 06</th>
+            <th>Contact No.1</th>
+            <th>Contact No.2</th>
             <th>Email</th>
-            <th>Emergency Contact Person</th>
-            <th>Emergency Contact</th>
         </tr>
         </thead>
-        <tbody id="employeeTableBody">
-        <!-- Employee data will be populated here -->
+        <tbody id="supplierTableBody">
+        <!-- Supplier data will be populated here -->
         </tbody>
     </table>
 </div>
@@ -214,6 +182,5 @@
         window.history.back();
     }
 </script>
-
 </body>
 </html>
