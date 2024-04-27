@@ -1,23 +1,24 @@
-package lk.ijse.shoeShop.entity;
+package lk.ijse.shoeShop.dto;
 
-import jakarta.persistence.*;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Id;
 import lk.ijse.shoeShop.util.Gender;
 import lk.ijse.shoeShop.util.Level;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
-
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "customer")
-public class CustomerEntity {
+@Builder
+public class CustomerDTO implements Serializable {
     @Id
     private String customerCode;
     private String CustomerName;
@@ -35,5 +36,4 @@ public class CustomerEntity {
     private String contact;
     private String email;
     private Timestamp purchaseDateTime;
-
 }
