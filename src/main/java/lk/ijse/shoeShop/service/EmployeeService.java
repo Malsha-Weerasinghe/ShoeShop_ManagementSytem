@@ -1,12 +1,11 @@
 package lk.ijse.shoeShop.service;
 
-import lk.ijse.shoeShop.dto.CustomerDTO;
 import lk.ijse.shoeShop.dto.EmployeeDTO;
 
 import java.util.List;
 
 public interface EmployeeService {
-    List<EmployeeDTO> getAllCustomers();
+    List<EmployeeDTO> getAllEmployee();
     EmployeeDTO getEmployeeDetails(String employeeCode);
     EmployeeDTO saveEmployee(EmployeeDTO employeeDTO);
     void updateEmployee(String employeeCode, EmployeeDTO EmployeeDTO);
