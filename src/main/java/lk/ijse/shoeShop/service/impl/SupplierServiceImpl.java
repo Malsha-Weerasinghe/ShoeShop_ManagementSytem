@@ -1,12 +1,8 @@
 package lk.ijse.shoeShop.service.impl;
 
-import lk.ijse.shoeShop.dto.EmployeeDTO;
 import lk.ijse.shoeShop.dto.SupplierDTO;
-import lk.ijse.shoeShop.entity.EmployeeEntity;
 import lk.ijse.shoeShop.entity.SupplierEntity;
-import lk.ijse.shoeShop.repository.EmployeeRepo;
 import lk.ijse.shoeShop.repository.SupplierRepo;
-import lk.ijse.shoeShop.service.EmployeeService;
 import lk.ijse.shoeShop.service.SupplierService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
