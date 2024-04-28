@@ -1,10 +1,12 @@
 package lk.ijse.shoeShop.dto;
 
+
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import lk.ijse.shoeShop.util.Gender;
 import lk.ijse.shoeShop.util.Level;
+import lk.ijse.shoeShop.util.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,17 +20,20 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CustomerDTO implements Serializable {
+public class EmployeeDTO implements Serializable {
     @Id
-    private String customerCode;
-    private String customerName;
+    private String employeeCode;
+    private String employeeName;
+    private String proPic;
     @Enumerated(EnumType.STRING)
     private Gender gender;
-    private Date joinDate;
+    private String status;
+    private String designation;
     @Enumerated(EnumType.STRING)
-    private Level level;
-    private int totPoints;
+    private Role role;
     private Date DOB;
+    private Date joinDate;
+    private String attachBranch;
     private String addressLine1;
     private String addressLine2;
     private String addressLine3;
@@ -36,5 +41,6 @@ public class CustomerDTO implements Serializable {
     private String addressLine5;
     private String contact;
     private String email;
-    private Timestamp purchaseDateTime;
+    private String guardian;
+    private String emergContact;
 }
