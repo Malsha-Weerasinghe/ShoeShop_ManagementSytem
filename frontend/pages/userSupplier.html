@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sale Service</title>
+  <title>Supplier Information</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -99,78 +99,82 @@
       height: 100%;
       object-fit: cover;
     }
+    #supplierForm,#supplierHead{
+      display: none;
+    }
+
   </style>
 </head>
 <body>
 <div class="container">
-  <h2>sales Information Form</h2>
+  <h2 id="supplierHead">Supplier Information Form</h2>
   <div class="backBtn" onclick="goBack()">
     <img src="../assets/images/back.png" alt="Image">
   </div>
-  <form id="itemForm">
-    <label for="itemCode">Item Code</label>
-    <input type="text" id="itemCode" name="itemCode" required>
+  <form id="supplierForm">
+    <label for="supplierCode">Supplier Code</label>
+    <input type="text" id="supplierCode" name="supplierCode" required>
 
-    <label for="orderNo">Order No.</label>
-    <input type="text" id="orderNo" name="orderNo" required>
+    <label for="supplierName">Supplier Name</label>
+    <input type="text" id="supplierName" name="supplierName" required>
 
-    <label for="customerName">Customer Name</label>
-    <input type="text" id="customerName" name="customerName">
-
-    <label for="itemDesc">Item Description</label>
-    <input type="text" id="itemDesc" name="itemDesc" required>
-
-    <label for="size">Size</label>
-    <input type="number" id="size" name="size" required>
-
-    <label for="unitPrice">Unit Price</label>
-    <input type="number" id="unitPrice" name="unitPrice" required>
-
-    <label for="itemQty">Item Quantity</label>
-    <input type="number" id="itemQty" name="itemQty" required>
-
-    <label for="totalPrice">Total Price</label>
-    <input type="number" id="totalPrice" name="totalPrice" required>
-
-    <label for="purchaseDate">Purchase Date</label>
-    <input type="datetime-local" id="purchaseDate" name="purchaseDate" required>
-
-    <label for="paymentMethod">Payment Method</label>
-    <select id="paymentMethod" name="paymentMethod" required>
-      <option value="">Select Payment Method</option>
-      <option value="Cash">Cash</option>
-      <option value="Card">Card</option>
+    <label for="category">Category</label>
+    <select id="category" name="category" required>
+      <option value="">Select Category</option>
+      <option value="International">International</option>
+      <option value="Local">Local</option>
     </select>
 
-    <label for="addedPoints">Added Points</label>
-    <input type="number" id="addedPoints" name="addedPoints">
+    <label for="addressLine01">Address Line 01</label>
+    <input type="text" id="addressLine01" name="addressLine01" required>
 
-    <label for="cashierName">Cashier Name</label>
-    <input type="text" id="cashierName" name="cashierName" required>
+    <label for="addressLine02">Address Line 02</label>
+    <input type="text" id="addressLine02" name="addressLine02">
+
+    <label for="addressLine03">Address Line 03</label>
+    <input type="text" id="addressLine03" name="addressLine03">
+
+    <label for="addressLine04">Address Line 04</label>
+    <input type="text" id="addressLine04" name="addressLine04">
+
+    <label for="addressLine05">Address Line 05</label>
+    <input type="text" id="addressLine05" name="addressLine05">
+
+    <label for="addressLine06">Address Line 06</label>
+    <input type="text" id="addressLine06" name="addressLine06">
+
+    <label for="contactNo1">Contact No. 1</label>
+    <input type="tel" id="contactNo1" name="contactNo1" required>
+
+    <label for="contactNo2">Contact No. 2</label>
+    <input type="tel" id="contactNo2" name="contactNo2">
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
 
     <button type="submit">Submit</button>
   </form>
 
-  <h2>sales Information Table</h2>
+  <h2>Supplier Information Table</h2>
   <table>
     <thead>
     <tr>
-      <th>Item Code</th>
-      <th>Order No.</th>
-      <th>Customer Name</th>
-      <th>Item Description</th>
-      <th>Size</th>
-      <th>Unit Price</th>
-      <th>Item Quantity</th>
-      <th>Total Price</th>
-      <th>Purchase Date</th>
-      <th>Payment Method</th>
-      <th>Added Points</th>
-      <th>Cashier Name</th>
+      <th>Supplier Code</th>
+      <th>Supplier Name</th>
+      <th>Category</th>
+      <th>Address Line 01</th>
+      <th>Address Line 02</th>
+      <th>Address Line 03</th>
+      <th>Address Line 04</th>
+      <th>Address Line 05</th>
+      <th>Address Line 06</th>
+      <th>Contact No.1</th>
+      <th>Contact No.2</th>
+      <th>Email</th>
     </tr>
     </thead>
-    <tbody id="itemTableBody">
-    <!-- Item data will be populated here -->
+    <tbody id="supplierTableBody">
+    <!-- Supplier data will be populated here -->
     </tbody>
   </table>
 </div>
@@ -184,4 +188,3 @@
 </script>
 </body>
 </html>
-``
