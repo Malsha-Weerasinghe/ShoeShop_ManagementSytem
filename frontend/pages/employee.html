@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Employee Information</title>
     <style>
         body {
@@ -109,6 +110,18 @@
     <div class="backBtn" onclick="goBack()">
         <img src="../assets/images/back.png" alt="Image">
     </div>
+    <div class="container mt-5 mb-5"> <!-- Added mb-5 for bottom margin -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Enter Employee ID" aria-label="Enter Customer ID" aria-describedby="search-button">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" id="search-button">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <form id="employeeForm">
         <label for="employeeCode">Employee Code</label>
         <input type="text" id="employeeCode" name="employeeCode" required>
@@ -174,7 +187,9 @@
         <label for="emergencyContact">Emergency Contact</label>
         <input type="tel" id="emergencyContact" name="emergencyContact">
 
-        <button type="submit">Submit</button>
+        <button type="button" class="btn btn-success">Save</button>
+        <button type="button" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-warning">Update</button>
     </form>
 
     <h2>Employee Information Table</h2>

@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <title>Item Information</title>
   <style>
     body {
@@ -107,6 +108,18 @@
   <div class="backBtn" onclick="goBack()">
     <img src="../assets/images/back.png" alt="Image">
   </div>
+  <div class="container mt-5 mb-5"> <!-- Added mb-5 for bottom margin -->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Enter Item ID" aria-label="Enter Customer ID" aria-describedby="search-button">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" id="search-button">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <form id="itemForm">
     <label for="itemCode">Item Code</label>
     <input type="text" id="itemCode" name="itemCode" required>
@@ -147,7 +160,9 @@
     <label for="status">Status</label>
     <input type="text" id="status" name="status">
 
-    <button type="submit">Submit</button>
+    <button type="button" class="btn btn-success">Save</button>
+    <button type="button" class="btn btn-danger">Delete</button>
+    <button type="button" class="btn btn-warning">Update</button>
   </form>
 
   <h2>Item Information Table</h2>
