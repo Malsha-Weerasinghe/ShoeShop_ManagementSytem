@@ -1,3 +1,4 @@
+/*
 package lk.ijse.shoeShop.repository;
 
 import lk.ijse.shoeShop.entity.UserEntity;
@@ -8,3 +9,4 @@ import java.util.Optional;
 public interface UserRepo extends JpaRepository<UserEntity,String> {
     Optional<UserEntity> findByEmail(String email);
 }
+*/

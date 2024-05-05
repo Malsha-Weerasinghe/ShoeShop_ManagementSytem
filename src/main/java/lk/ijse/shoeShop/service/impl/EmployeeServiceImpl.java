@@ -1,7 +1,7 @@
 package lk.ijse.shoeShop.service.impl;
 
 import lk.ijse.shoeShop.dto.EmployeeDTO;
-import lk.ijse.shoeShop.entity.EmployeeEntity;
+import lk.ijse.shoeShop.entity.Employee;
 import lk.ijse.shoeShop.repository.EmployeeRepo;
 import lk.ijse.shoeShop.service.EmployeeService;
 import org.modelmapper.ModelMapper;
@@ -37,7 +37,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public EmployeeDTO saveEmployee(EmployeeDTO employeeDTO) {
         employeeDTO.setEmployeeCode(UUID.randomUUID().toString());
         return mapper.map(employeeRepo.save(mapper.map(
-               employeeDTO , EmployeeEntity.class)), EmployeeDTO.class);
+               employeeDTO , Employee.class)), EmployeeDTO.class);
     }
 
     @Override

@@ -1,10 +1,8 @@
 package lk.ijse.shoeShop.advice;
 
-
-import lk.ijse.gdse66.springboot.backend.services.exception.DuplicateRecordException;
-import lk.ijse.gdse66.springboot.backend.services.exception.NotFoundException;
-import lk.ijse.gdse66.springboot.backend.services.exception.ServiceException;
-import org.hibernate.service.spi.ServiceException;
+import lk.ijse.shoeShop.service.exception.DuplicateRecordException;
+import lk.ijse.shoeShop.service.exception.NotFoundException;
+import lk.ijse.shoeShop.service.exception.ServiceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;

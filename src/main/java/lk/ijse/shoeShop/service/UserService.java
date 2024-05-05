@@ -1,3 +1,4 @@
+/*
 package lk.ijse.shoeShop.service;
 
 import lk.ijse.shoeShop.dto.UserDTO;
@@ -7,3 +8,4 @@ public interface UserService {
     UserDetailsService userDetailService();
     void Save(UserDTO userDTO);
 }
+*/

@@ -1,52 +1,82 @@
 package lk.ijse.shoeShop.service.impl;
 
 import lk.ijse.shoeShop.dto.CustomerDTO;
-import lk.ijse.shoeShop.entity.CustomerEntity;
+import lk.ijse.shoeShop.entity.Customer;
 import lk.ijse.shoeShop.repository.CustomerRepo;
 import lk.ijse.shoeShop.service.CustomerService;
+import lk.ijse.shoeShop.service.exception.DuplicateRecordException;
+import lk.ijse.shoeShop.service.exception.NotFoundException;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
-@Transactional
 public class CustomerServiceImpl implements CustomerService {
-    CustomerRepo customerRepo;
-    ModelMapper mapper;
 
-    public CustomerServiceImpl(CustomerRepo customerRepo, ModelMapper mapper) {
-        this.customerRepo = customerRepo;
-        this.mapper = mapper;
+    @Autowired
+    private CustomerRepo customerRepo;
+
+    @Autowired
+    private ModelMapper mapper;
+    @Override
+    public CustomerDTO saveCustomer(CustomerDTO customerDTO) {
+        if (customerRepo.existsById(customerDTO.getCustomerCode())){
+            throw new DuplicateRecordException("Customer Id is already exists !!");
+        }
+        return mapper.map(customerRepo.save(mapper.map(customerDTO, Customer.class)),CustomerDTO.class);
+    }
+
+    @Override
+    public CustomerDTO updateCustomer(CustomerDTO customerDTO) {
+        if (!customerRepo.existsById(customerDTO.getCustomerCode())){
+            throw new NotFoundException("Can't find customer id !!");
+        }
+        return mapper.map(customerRepo.save(mapper.map(customerDTO, Customer.class)), CustomerDTO.class);
+    }
+
+    @Override
+    public boolean deleteCustomer(String customerCode) {
+        if (!customerRepo.existsById(customerCode)){
+            throw new NotFoundException("Can't find customer id !!");
+        }
+        return false;
     }
 
     @Override
     public List<CustomerDTO> getAllCustomers() {
-        return customerRepo.findAll().stream().map(
-                customer -> mapper.map(customer, CustomerDTO.class)).toList();
+        return customerRepo.findAll().stream().map(customer -> mapper.map(customer, CustomerDTO.class)).toList();
     }
 
     @Override
-    public CustomerDTO getCustomerDetails(String customerCode) {
-        return null;
+    public List<CustomerDTO> searchCustomer(String customerName) {
+
+        return customerRepo.findByCustomerNameStartingWith(customerName).stream().map(customer -> mapper.map(customer, CustomerDTO.class)).toList();
     }
 
     @Override
-    public CustomerDTO saveCustomer(CustomerDTO customerDTO) {
-        customerDTO.setCustomerCode(UUID.randomUUID().toString());
-        return mapper.map(customerRepo.save(mapper.map(
-                customerDTO, CustomerEntity.class)), CustomerDTO.class);
-    }
+    public String generateNextId() {
+        String prefix = "C";
+        String customerCode = "";
 
-    @Override
-    public void updateCustomer(String customerCode, CustomerDTO customerDTO) {
+        Customer lastCustomer = customerRepo.findTopByOrderByCustomerCodeDesc();
+        int nextNumericPart;
+        if (lastCustomer != null) {
+            String lastCode = lastCustomer.getCustomerCode();
+            String numericPartString = lastCode.substring(prefix.length());
+            try {
+                int numericPart = Integer.parseInt(numericPartString);
+                nextNumericPart = numericPart + 1;
+            } catch (NumberFormatException e) {
+                nextNumericPart = 1;
+            }
+        } else {
+            nextNumericPart = 1;
+        }
+        customerCode = prefix + String.format("%03d", nextNumericPart);
 
-    }
-
-    @Override
-    public void deleteCustomer(String customerCode) {
+        return customerCode;
 
     }
 }

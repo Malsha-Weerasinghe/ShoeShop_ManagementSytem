@@ -1,7 +1,15 @@
 package lk.ijse.shoeShop.repository;
 
-import lk.ijse.shoeShop.entity.CustomerEntity;
+import lk.ijse.shoeShop.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface CustomerRepo extends JpaRepository<CustomerEntity,String> {
+import java.util.List;
+
+@Repository
+public interface CustomerRepo extends JpaRepository<Customer,String> {
+
+    Customer findTopByOrderByCustomerCodeDesc();
+
+    List<Customer> findByCustomerNameStartingWith(String customerName);
 }

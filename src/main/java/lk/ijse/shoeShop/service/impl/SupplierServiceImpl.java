@@ -1,7 +1,7 @@
 package lk.ijse.shoeShop.service.impl;
 
 import lk.ijse.shoeShop.dto.SupplierDTO;
-import lk.ijse.shoeShop.entity.SupplierEntity;
+import lk.ijse.shoeShop.entity.Supplier;
 import lk.ijse.shoeShop.repository.SupplierRepo;
 import lk.ijse.shoeShop.service.SupplierService;
 import org.modelmapper.ModelMapper;
@@ -37,7 +37,7 @@ public class SupplierServiceImpl implements SupplierService {
     public SupplierDTO saveSuppliers(SupplierDTO supplierDTO) {
         supplierDTO.setSupplierCode(UUID.randomUUID().toString());
         return mapper.map(supplierRepo.save(mapper.map(
-                supplierDTO , SupplierEntity.class)), SupplierDTO.class);
+                supplierDTO , Supplier.class)), SupplierDTO.class);
     }
 
     @Override
