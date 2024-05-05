@@ -26,6 +26,7 @@ public class Customer {
     @Enumerated(EnumType.STRING)
     private Level level;
     private int totPoints;
+    private Date DOB;
     private String addressLine1;
     private String addressLine2;
     private String addressLine3;
