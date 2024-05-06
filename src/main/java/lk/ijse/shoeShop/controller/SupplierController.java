@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/suppliers")
+@RequestMapping("supplier")
 public class SupplierController {
 
     private final SupplierService supplierService;
@@ -20,14 +20,24 @@ public class SupplierController {
         this.supplierService = supplierService;
     }
 
-
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    List<SupplierDTO> getAllSuppliers(){
-        return supplierService.getAllSuppliers();
+    @GetMapping
+    public List<SupplierDTO> getAllSupplier() {
+        return supplierService.getAllSupplier();
     }
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.CREATED)
-    SupplierDTO saveSuppliers(@RequestBody SupplierDTO supplierDTO){ return supplierService.saveSuppliers(supplierDTO);
+    @PostMapping
+    public SupplierDTO saveSupplier(@RequestBody SupplierDTO supplierDTO) {
+        return supplierService.saveSupplier(supplierDTO);
     }
+
+    @PutMapping
+    public SupplierDTO updateSuplier(@RequestBody SupplierDTO supplierDTO) {
+        return supplierService.updateSupplier(supplierDTO);
+    }
+
+    @DeleteMapping
+    public void deleteSupplier(@PathVariable("supplierCode") String supplierCode){
+        supplierService.deleteSupplier(supplierCode);
+    }
+
 }

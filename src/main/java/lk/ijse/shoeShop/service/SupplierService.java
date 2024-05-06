@@ -6,9 +6,17 @@ import lk.ijse.shoeShop.dto.SupplierDTO;
 import java.util.List;
 
 public interface SupplierService {
-    List<SupplierDTO> getAllSuppliers();
+    /*List<SupplierDTO> getAllSuppliers();
     SupplierDTO getSuppliersDetails(String supplierCode);
     SupplierDTO saveSuppliers(SupplierDTO supplierDTO);
     void updateSuppliers(String supplierCode, SupplierDTO supplierDTO);
-    void deleteSuppliers(String supplierCode);
+    void deleteSuppliers(String supplierCode);*/
+
+    List<SupplierDTO> getAllSupplier();
+
+    SupplierDTO saveSupplier(SupplierDTO supplierDTO);
+
+    SupplierDTO updateSupplier(SupplierDTO supplierDTO);
+
+    void deleteSupplier(String supplierCode);
 }
