@@ -13,11 +13,12 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "employee")
+/*@Table(name = "employee")*/
 public class Employee {
     @Id
     private String employeeCode;
     private String employeeName;
+    @Column(columnDefinition = "LONGTEXT")
     private String proPic;
     @Enumerated(EnumType.STRING)
     private Gender gender;

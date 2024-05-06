@@ -1,6 +1,7 @@
 package lk.ijse.shoeShop.dto;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
@@ -24,6 +25,7 @@ public class EmployeeDTO implements Serializable {
     @Id
     private String employeeCode;
     private String employeeName;
+    @Column(columnDefinition = "LONGTEXT")
     private String proPic;
     @Enumerated(EnumType.STRING)
     private Gender gender;
@@ -43,4 +45,5 @@ public class EmployeeDTO implements Serializable {
     private String email;
     private String guardian;
     private String emergContact;
+
 }
