@@ -1,3 +1,4 @@
+D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\controller\InventoryController.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\SpringBootJWTApplication.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\util\Category.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\dto\SupplierDTO.java
@@ -5,10 +6,12 @@ D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\repository\UserR
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\service\impl\CustomerServiceImpl.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\service\SupplierService.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\service\exception\ServiceException.java
+D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\repository\InventoryRepo.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\service\CustomerService.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\repository\SupplierRepo.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\repository\EmployeeRepo.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\util\Role.java
+D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\service\impl\InventoryServiceImpl.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\service\impl\SupplierServiceImpl.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\service\impl\UserServiceImpl.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\entity\Customer.java
@@ -19,12 +22,16 @@ D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\dto\UserDTO.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\repository\CustomerRepo.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\service\exception\DuplicateRecordException.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\util\Level.java
+D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\service\InventoryService.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\entity\Supplier.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\controller\CustomerController.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\util\Gender.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\entity\User.java
+D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\entity\Inventory.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\controller\EmployeeController.java
+D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\dto\InventoryDTO.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\service\EmployeeService.java
+D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\dto\SaleDTO.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\advice\GlobalExceptionHandler.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\dto\EmployeeDTO.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\entity\Employee.java

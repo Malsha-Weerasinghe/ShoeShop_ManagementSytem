@@ -27,11 +27,7 @@ public class Customer {
     private Level level;
     private int totPoints;
     private Date DOB;
-    private String addressLine1;
-    private String addressLine2;
-    private String addressLine3;
-    private String addressLine4;
-    private String addressLine5;
+    private String address;
     private String contact;
     private String email;
     private Timestamp purchaseDateTime;
