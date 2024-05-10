@@ -30,6 +30,7 @@ D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\entity\User.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\entity\Inventory.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\controller\EmployeeController.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\dto\InventoryDTO.java
+D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\dto\SalesInventoryDTO.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\service\EmployeeService.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\dto\SaleDTO.java
 D:\AAD-Final-Coursework\ShoeShop\src\main\java\lk\ijse\shoeShop\advice\GlobalExceptionHandler.java
