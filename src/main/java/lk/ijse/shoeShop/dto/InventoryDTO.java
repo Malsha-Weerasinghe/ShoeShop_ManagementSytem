@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class InventoryDTO {
-    private String itemCode;
+    private String item_code;
     private String itemDescription;
     private String itemPic;
     private String category;

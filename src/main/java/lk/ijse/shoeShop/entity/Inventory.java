@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 /*@Table(name = "inevetory")*/
 public class Inventory {
     @Id
-    private String itemCode;
+    private String item_code;
     private String itemDescription;
     private String itemPic;
     private String category;
