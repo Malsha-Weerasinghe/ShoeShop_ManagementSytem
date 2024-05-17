@@ -1,5 +1,6 @@
 package lk.ijse.shoeShop.controller;
 
+import lk.ijse.shoeShop.dto.CustomDTO;
 import lk.ijse.shoeShop.dto.EmployeeDTO;
 import lk.ijse.shoeShop.dto.SupplierDTO;
 import lk.ijse.shoeShop.service.EmployeeService;
@@ -40,22 +41,16 @@ public class SupplierController {
         return supplierService.updateSupplier(supplierDTO);
     }
 
-    /*@GetMapping("/nextId")
-    public String nextId(){
-        return supplierService.generateNextId();
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping(path = "/SupplierIdGenerate")
+    public @ResponseBody
+    CustomDTO supplierIdGenerate() {
+        return supplierService.supplierIdGenerate();
     }
-*/
-    /*@GetMapping("/search")
-    public List<SupplierDTO> search(@RequestParam("supplierName") String supplierName){
-        return supplierService.searchSupplier(supplierName);
-    }*/
 
     @DeleteMapping("/delete/{supplierCode}")
     public void delete(@PathVariable("supplierCode") String supplierCode){
         supplierService.deleteSupplier(supplierCode);
     }
-
-
-
 
 }

@@ -1,6 +1,8 @@
 package lk.ijse.shoeShop.service;
 
+import lk.ijse.shoeShop.dto.CustomDTO;
 import lk.ijse.shoeShop.dto.SupplierDTO;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -9,6 +11,7 @@ public interface SupplierService {
     SupplierDTO updateSupplier(SupplierDTO supplierDTO);
     boolean deleteSupplier(String supplierCode);
     List<SupplierDTO> getAllSuppliers();
-  /*  List<SupplierDTO> searchSupplier(String supplierName);*/
-   /* String generateNextId();*/
+
+    @ResponseBody
+    CustomDTO supplierIdGenerate();
 }

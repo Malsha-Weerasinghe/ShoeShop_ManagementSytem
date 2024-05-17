@@ -1,5 +1,6 @@
 package lk.ijse.shoeShop.service.impl;
 
+import lk.ijse.shoeShop.dto.CustomDTO;
 import lk.ijse.shoeShop.dto.SupplierDTO;
 import lk.ijse.shoeShop.entity.Supplier;
 import lk.ijse.shoeShop.repository.SupplierRepo;
@@ -48,6 +49,7 @@ public class SupplierServiceImpl implements SupplierService {
         if (!supplierRepo.existsById(supplierCode)){
             throw new NotFoundException("Can't find supplier id !!");
         }
+        supplierRepo.deleteById(supplierCode);
         return false;
     }
 
@@ -56,33 +58,8 @@ public class SupplierServiceImpl implements SupplierService {
         return supplierRepo.findAll().stream().map(supplier -> mapper.map(supplier, SupplierDTO.class)).toList();
     }
 
-    /*@Override
-    public List<SupplierDTO> searchSupplier(String supplierName) {
-        return supplierRepo.findByNameStartingWith(supplierName).stream().map(supplier -> mapper.map(supplier, SupplierDTO.class)).toList();
-
-    }*/
-
-   /* @Override
-    public String generateNextId() {
-        String prefix = "S";
-        String id = "";
-
-        Supplier lastSupplier = supplierRepo.findTopByOrderByCodeDesc();
-        int nextNumericPart;
-        if (lastSupplier != null) {
-            String lastCode = lastSupplier.getSupplierCode();
-            String numericPartString = lastCode.substring(prefix.length());
-            try {
-                int numericPart = Integer.parseInt(numericPartString);
-                nextNumericPart = numericPart + 1;
-            } catch (NumberFormatException e) {
-                nextNumericPart = 1;
-            }
-        } else {
-            nextNumericPart = 1;
-        }
-        id = prefix + String.format("%03d", nextNumericPart);
-
-        return id;
-    }*/
+    @Override
+    public CustomDTO supplierIdGenerate() {
+        return new CustomDTO(supplierRepo.getLastIndex());
+    }
 }
