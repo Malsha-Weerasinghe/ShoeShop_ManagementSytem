@@ -1,10 +1,13 @@
 package lk.ijse.shoeShop.service.impl;
 
+import lk.ijse.shoeShop.dto.CustomDTO;
 import lk.ijse.shoeShop.dto.CustomerDTO;
+import lk.ijse.shoeShop.dto.EmployeeDTO;
 import lk.ijse.shoeShop.dto.InventoryDTO;
 import lk.ijse.shoeShop.entity.Inventory;
 import lk.ijse.shoeShop.repository.InventoryRepo;
 import lk.ijse.shoeShop.service.InventoryService;
+import lk.ijse.shoeShop.service.exception.NotFoundException;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -42,7 +46,24 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
     @Override
-    public void deleteInventory(String itemCode) {
-        inventoryRepo.delete(modelMapper.map(itemCode, Inventory.class));
+    public void deleteInventory(String item_code) {
+        inventoryRepo.delete(modelMapper.map(item_code, Inventory.class));
     }
+
+
+    @Override
+    public CustomDTO inventoryIdGenerate() {
+        return new CustomDTO(inventoryRepo.getLastIndex());
+    }
+
+    /*@Override
+    public List<InventoryDTO> searchInventory(String item_code) {
+        List<Inventory> inventoryEntities = inventoryRepo.findByItemCodeStartingWith(item_code);
+        if (inventoryEntities.isEmpty()) {
+            throw new NotFoundException("No items found with item code starting with: " + item_code);
+        }
+        return inventoryEntities.stream()
+                .map(inventory -> modelMapper.map(inventory, InventoryDTO.class))
+                .collect(Collectors.toList());
+    }*/
 }

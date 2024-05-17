@@ -1,8 +1,7 @@
 package lk.ijse.shoeShop.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lk.ijse.shoeShop.util.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,6 +25,7 @@ public class Inventory {
     private int qty;
     private Double expectedProfit;
     private Double profitMargin;
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
 }

@@ -24,8 +24,7 @@ public class Employee {
     private String proPic;
     @Enumerated(EnumType.STRING)
     private Gender gender;
-    @Enumerated(EnumType.STRING)
-    private Status status;
+    private String status;
     @Enumerated(EnumType.STRING)
     private Designation designation;
     @Enumerated(EnumType.STRING)

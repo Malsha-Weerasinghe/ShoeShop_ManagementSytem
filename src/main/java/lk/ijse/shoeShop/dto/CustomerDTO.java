@@ -18,7 +18,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CustomerDTO implements Serializable {
+public class CustomerDTO{
     @Id
     private String customerCode;
     private String customerName;

@@ -17,7 +17,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class SupplierDTO implements Serializable {
+public class SupplierDTO{
 
     private String supplierCode;
     private String supplierName;

@@ -1,62 +1,61 @@
 package lk.ijse.shoeShop.controller;
 
 
+import lk.ijse.shoeShop.dto.CustomDTO;
 import lk.ijse.shoeShop.dto.EmployeeDTO;
 import lk.ijse.shoeShop.dto.InventoryDTO;
+import lk.ijse.shoeShop.service.CustomerService;
 import lk.ijse.shoeShop.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Base64;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("inventory")
 public class InventoryController {
     @Autowired
-    InventoryService inventoryService;
+    private InventoryService inventoryService;
 
-    @GetMapping
-    public List<InventoryDTO> getAllInventory() {
-        return inventoryService.getAllInventory();
+    public InventoryController(InventoryService inventoryService) {
+        System.out.println("Inventory Working");
     }
 
-    @PostMapping
-    public InventoryDTO saveInventory(
-            @RequestPart("itemCode")  String itemCode,
-            @RequestPart("itemDescription") String itemDescription,
-            @RequestPart("itemPic") String itemPic,
-            @RequestPart("category") String category,
-            @RequestPart("size") int size,
-            @RequestPart("supplierCode") String supplierCode,
-            @RequestPart("supplierName") String supplierName,
-            @RequestPart("unitPriceSale") Double unitPriceSale,
-            @RequestPart("unitPriceBuy") Double unitPriceBuy,
-            @RequestPart("qty") int qty,
-            @RequestPart("expectedProfit") Double expectedProfit,
-            @RequestPart("profitMargin") Double profitMargin,
-            @RequestPart("status") String status) {
-
-        String base64ProfilePic = Base64.getEncoder().encodeToString(itemPic.getBytes());
-        InventoryDTO inventoryDTO = new InventoryDTO(itemCode,itemDescription,base64ProfilePic,category,size,supplierCode,supplierName,unitPriceSale,unitPriceBuy,qty,expectedProfit,profitMargin,status);
-        return inventoryService.saveInventory(inventoryDTO);
+    @GetMapping("/getAllItems")
+    public List<InventoryDTO> getAllItems(){
+        return inventoryService.getAllInventory();
     }
 
     @PostMapping("/save")
     public InventoryDTO save(@RequestBody InventoryDTO inventoryDTO){
         System.out.println(inventoryDTO);
-//        customerDTO.setCode(customerService.generateNextId());
         return inventoryService.saveInventory(inventoryDTO);
     }
 
-    @PutMapping
-    public InventoryDTO updateInventory(@RequestBody InventoryDTO inventoryDTO) {
+    @PostMapping("/update")
+    public InventoryDTO update(@RequestBody InventoryDTO inventoryDTO){
+        System.out.println(inventoryDTO);
         return inventoryService.updateInventory(inventoryDTO);
     }
 
-    @DeleteMapping
-    public void deleteInventory(@PathVariable("itemCode") String itemCode){
-        inventoryService.deleteInventory(itemCode);
+    @DeleteMapping("/delete/{item_code}")
+    public void delete(@PathVariable("item_code") String item_code){
+        inventoryService.deleteInventory(item_code);
     }
 
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping(path = "/InventoryIdGenerate")
+    public @ResponseBody
+    CustomDTO inventoryIdGenerate() {
+        return inventoryService.inventoryIdGenerate();
+    }
+
+    /*@GetMapping("/search")
+    public List<InventoryDTO> search(@RequestParam("item_code") String item_code){
+        return inventoryService.searchInventory(item_code);
+    }*/
 }

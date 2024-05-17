@@ -19,7 +19,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class EmployeeDTO implements Serializable {
+public class EmployeeDTO{
     @Id
     private String employeeCode;
     private String employeeName;
@@ -27,8 +27,7 @@ public class EmployeeDTO implements Serializable {
     private String proPic;
     @Enumerated(EnumType.STRING)
     private Gender gender;
-    @Enumerated(EnumType.STRING)
-    private Status status;
+    private String status;
     @Enumerated(EnumType.STRING)
     private Designation designation;
     @Enumerated(EnumType.STRING)
