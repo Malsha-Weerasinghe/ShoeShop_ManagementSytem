@@ -5,9 +5,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
-import lk.ijse.shoeShop.util.Gender;
-import lk.ijse.shoeShop.util.Level;
-import lk.ijse.shoeShop.util.Role;
+import lk.ijse.shoeShop.util.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,8 +27,10 @@ public class EmployeeDTO implements Serializable {
     private String proPic;
     @Enumerated(EnumType.STRING)
     private Gender gender;
-    private String status;
-    private String designation;
+    @Enumerated(EnumType.STRING)
+    private Status status;
+    @Enumerated(EnumType.STRING)
+    private Designation designation;
     @Enumerated(EnumType.STRING)
     private Role role;
     private Date DOB;
