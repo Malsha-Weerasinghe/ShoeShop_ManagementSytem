@@ -1,6 +1,7 @@
 package lk.ijse.shoeShop.controller;
 
 
+import lk.ijse.shoeShop.dto.CustomDTO;
 import lk.ijse.shoeShop.dto.CustomerDTO;
 import lk.ijse.shoeShop.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +40,11 @@ public class CustomerController {
         return customerService.updateCustomer(customerDTO);
     }
 
-    @GetMapping("/nextId")
-    public String nextId(){
-        return customerService.generateNextId();
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping(path = "/CustomerIdGenerate")
+    public @ResponseBody
+    CustomDTO customerIdGenerate() {
+        return customerService.customerIdGenerate();
     }
 
     @GetMapping("/search")

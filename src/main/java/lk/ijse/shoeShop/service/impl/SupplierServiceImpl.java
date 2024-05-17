@@ -4,6 +4,8 @@ import lk.ijse.shoeShop.dto.SupplierDTO;
 import lk.ijse.shoeShop.entity.Supplier;
 import lk.ijse.shoeShop.repository.SupplierRepo;
 import lk.ijse.shoeShop.service.SupplierService;
+import lk.ijse.shoeShop.service.exception.DuplicateRecordException;
+import lk.ijse.shoeShop.service.exception.NotFoundException;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,32 +18,71 @@ import java.util.UUID;
 @Service
 @Transactional
 public class SupplierServiceImpl implements SupplierService {
-    @Autowired
-    private ModelMapper modelMapper;
+
     @Autowired
     private SupplierRepo supplierRepo;
-    @Override
-    public List<SupplierDTO> getAllSupplier() {
-        List<Supplier>userList=supplierRepo.findAll();
-        return modelMapper.map(userList,new TypeToken<List<SupplierDTO>>(){}.getType());
 
-    }
+    @Autowired
+    private ModelMapper mapper;
 
     @Override
     public SupplierDTO saveSupplier(SupplierDTO supplierDTO) {
-        supplierRepo.save(modelMapper.map(supplierDTO, Supplier.class));
-        return supplierDTO;
+
+        if (supplierRepo.existsById(supplierDTO.getSupplierCode())){
+            throw new DuplicateRecordException("Customer Id is already exists !!");
+        }
+        return mapper.map(supplierRepo.save(mapper.map(supplierDTO, Supplier.class)), SupplierDTO.class);
     }
 
     @Override
     public SupplierDTO updateSupplier(SupplierDTO supplierDTO) {
-        supplierRepo.save(modelMapper.map(supplierDTO, Supplier.class));
-        return supplierDTO;
+
+        if (!supplierRepo.existsById(supplierDTO.getSupplierCode())){
+            throw new NotFoundException("Can't find customer id !!");
+        }
+        return mapper.map(supplierRepo.save(mapper.map(supplierDTO, Supplier.class)), SupplierDTO.class);
     }
 
     @Override
-    public void deleteSupplier(String supplierCode) {
-        supplierRepo.delete(modelMapper.map(supplierCode, Supplier.class));
-
+    public boolean deleteSupplier(String supplierCode) {
+        if (!supplierRepo.existsById(supplierCode)){
+            throw new NotFoundException("Can't find supplier id !!");
+        }
+        return false;
     }
+
+    @Override
+    public List<SupplierDTO> getAllSuppliers() {
+        return supplierRepo.findAll().stream().map(supplier -> mapper.map(supplier, SupplierDTO.class)).toList();
+    }
+
+    /*@Override
+    public List<SupplierDTO> searchSupplier(String supplierName) {
+        return supplierRepo.findByNameStartingWith(supplierName).stream().map(supplier -> mapper.map(supplier, SupplierDTO.class)).toList();
+
+    }*/
+
+   /* @Override
+    public String generateNextId() {
+        String prefix = "S";
+        String id = "";
+
+        Supplier lastSupplier = supplierRepo.findTopByOrderByCodeDesc();
+        int nextNumericPart;
+        if (lastSupplier != null) {
+            String lastCode = lastSupplier.getSupplierCode();
+            String numericPartString = lastCode.substring(prefix.length());
+            try {
+                int numericPart = Integer.parseInt(numericPartString);
+                nextNumericPart = numericPart + 1;
+            } catch (NumberFormatException e) {
+                nextNumericPart = 1;
+            }
+        } else {
+            nextNumericPart = 1;
+        }
+        id = prefix + String.format("%03d", nextNumericPart);
+
+        return id;
+    }*/
 }

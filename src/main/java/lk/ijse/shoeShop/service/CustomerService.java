@@ -1,6 +1,8 @@
 package lk.ijse.shoeShop.service;
 
+import lk.ijse.shoeShop.dto.CustomDTO;
 import lk.ijse.shoeShop.dto.CustomerDTO;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -11,5 +13,6 @@ public interface CustomerService {
     List<CustomerDTO> getAllCustomers();
     List<CustomerDTO> searchCustomer(String customerName);
 
-    String generateNextId();
+    @ResponseBody
+    CustomDTO customerIdGenerate();
 }

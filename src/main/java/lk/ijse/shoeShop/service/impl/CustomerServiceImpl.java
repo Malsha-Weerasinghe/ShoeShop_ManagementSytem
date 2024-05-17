@@ -1,5 +1,6 @@
 package lk.ijse.shoeShop.service.impl;
 
+import lk.ijse.shoeShop.dto.CustomDTO;
 import lk.ijse.shoeShop.dto.CustomerDTO;
 import lk.ijse.shoeShop.entity.Customer;
 import lk.ijse.shoeShop.repository.CustomerRepo;
@@ -41,6 +42,7 @@ public class CustomerServiceImpl implements CustomerService {
         if (!customerRepo.existsById(customerCode)){
             throw new NotFoundException("Can't find customer id !!");
         }
+        customerRepo.deleteById(customerCode);
         return false;
     }
 
@@ -56,27 +58,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public String generateNextId() {
-        String prefix = "C";
-        String customerCode = "";
-
-        Customer lastCustomer = customerRepo.findTopByOrderByCustomerCodeDesc();
-        int nextNumericPart;
-        if (lastCustomer != null) {
-            String lastCode = lastCustomer.getCustomerCode();
-            String numericPartString = lastCode.substring(prefix.length());
-            try {
-                int numericPart = Integer.parseInt(numericPartString);
-                nextNumericPart = numericPart + 1;
-            } catch (NumberFormatException e) {
-                nextNumericPart = 1;
-            }
-        } else {
-            nextNumericPart = 1;
-        }
-        customerCode = prefix + String.format("%03d", nextNumericPart);
-
-        return customerCode;
-
+    public CustomDTO customerIdGenerate() {
+        return new CustomDTO(customerRepo.getLastIndex());
     }
 }

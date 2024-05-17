@@ -114,6 +114,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (!employeeRepo.existsById(employeeCode)){
             throw new NotFoundException("Can't find employee id !!");
         }
+        employeeRepo.deleteById(employeeCode);
         return false;
     }
 
