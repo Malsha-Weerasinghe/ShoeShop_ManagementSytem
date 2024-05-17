@@ -1,6 +1,7 @@
 package lk.ijse.shoeShop.controller;
 
 
+import lk.ijse.shoeShop.dto.CustomDTO;
 import lk.ijse.shoeShop.dto.CustomerDTO;
 import lk.ijse.shoeShop.dto.EmployeeDTO;
 import lk.ijse.shoeShop.service.CustomerService;
@@ -8,6 +9,7 @@ import lk.ijse.shoeShop.service.EmployeeService;
 import lk.ijse.shoeShop.util.Gender;
 import lk.ijse.shoeShop.util.Role;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Base64;
@@ -45,9 +47,11 @@ public class EmployeeController {
         return employeeService.updateEmployee(employeeDTO);
     }
 
-    @GetMapping("/nextId")
-    public String nextId(){
-        return employeeService.generateNextId();
+    @ResponseStatus(HttpStatus.CREATED)
+    @GetMapping(path = "/EmployeeIdGenerate")
+    public @ResponseBody
+    CustomDTO customerIdGenerate() {
+        return employeeService.employeeIdGenerate();
     }
 
     @GetMapping("/search")

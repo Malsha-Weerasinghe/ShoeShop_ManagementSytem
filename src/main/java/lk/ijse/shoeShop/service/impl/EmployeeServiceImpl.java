@@ -1,5 +1,6 @@
 package lk.ijse.shoeShop.service.impl;
 
+import lk.ijse.shoeShop.dto.CustomDTO;
 import lk.ijse.shoeShop.dto.CustomerDTO;
 import lk.ijse.shoeShop.dto.EmployeeDTO;
 import lk.ijse.shoeShop.entity.Customer;
@@ -20,73 +21,6 @@ import java.util.List;
 @Service
 @Transactional
 public class EmployeeServiceImpl implements EmployeeService {
-    /*EmployeeRepo employeeRepo;
-    ModelMapper mapper;
-
-    public EmployeeServiceImpl(EmployeeRepo employeeRepo, ModelMapper mapper) {
-        this.employeeRepo = employeeRepo;
-        this.mapper = mapper;
-    }
-
-    @Override
-    public List<EmployeeDTO> getAllEmployee() {
-        return employeeRepo.findAll().stream().map(
-                employee -> mapper.map(employee, EmployeeDTO.class)).toList();
-    }
-
-    @Override
-    public EmployeeDTO getEmployeeDetails(String employeeCode) {
-        return null;
-    }
-
-    @Override
-    public EmployeeDTO saveEmployee(EmployeeDTO employeeDTO) {
-        employeeDTO.setEmployeeCode(UUID.randomUUID().toString());
-        return mapper.map(employeeRepo.save(mapper.map(
-               employeeDTO , Employee.class)), EmployeeDTO.class);
-    }
-
-    @Override
-    public void updateEmployee(String employeeCode, EmployeeDTO employeeDTO) {
-
-    }
-
-    @Override
-    public void deleteEmployee(String employeeCode) {
-
-    }*/
-/*
-    @Autowired
-
-    private ModelMapper modelMapper;
-    @Autowired
-    private EmployeeRepo employeeRepo;
-
-
-    @Override
-    public List<EmployeeDTO> getAllEmployee() {
-        List<Employee>userList=employeeRepo.findAll();
-        *//*return modelMapper.map(userList,new TypeToken<List<CustomerDTO>>(){}.getType());*//*
-        return modelMapper.map(userList,new TypeToken<List<EmployeeDTO>>(){}.getType());
-    }
-    @Override
-    public EmployeeDTO saveEmployee(EmployeeDTO employeeDTO) {
-        employeeRepo.save(modelMapper.map(employeeDTO, Employee.class));
-        return employeeDTO;
-    }
-
-    @Override
-    public EmployeeDTO updateEmployee(EmployeeDTO employeeDTO) {
-
-        employeeRepo.save(modelMapper.map(employeeDTO, Employee.class));
-        return employeeDTO;
-    }
-
-    @Override
-    public void deleteEmployee(String employeeCode) {
-        employeeRepo.delete(modelMapper.map(employeeCode, Employee.class));
-
-    }*/
 
     @Autowired
     private EmployeeRepo employeeRepo;
@@ -130,28 +64,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public String generateNextId() {
-        String prefix = "E";
-        String employeeCode = "";
-
-        Employee lastEmployee = employeeRepo.findTopByOrderByEmployeeCodeDesc();
-        int nextNumericPart;
-        if (lastEmployee != null) {
-            String lastCode = lastEmployee.getEmployeeCode();
-            String numericPartString = lastCode.substring(prefix.length());
-            try {
-                int numericPart = Integer.parseInt(numericPartString);
-                nextNumericPart = numericPart + 1;
-            } catch (NumberFormatException e) {
-                nextNumericPart = 1;
-            }
-        } else {
-            nextNumericPart = 1;
-        }
-        employeeCode = prefix + String.format("%03d", nextNumericPart);
-
-        return employeeCode;
-
+    public CustomDTO employeeIdGenerate() {
+        return new CustomDTO(employeeRepo.getLastIndex());
     }
 
 }
