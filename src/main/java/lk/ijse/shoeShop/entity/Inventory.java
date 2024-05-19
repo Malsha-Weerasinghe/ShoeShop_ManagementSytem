@@ -15,6 +15,7 @@ public class Inventory {
     @Id
     private String item_code;
     private String itemDescription;
+    @Column(columnDefinition = "LONGTEXT")
     private String itemPic;
     private String category;
     private int size;

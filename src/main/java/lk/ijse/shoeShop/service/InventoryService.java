@@ -13,7 +13,7 @@ public interface InventoryService {
 
     InventoryDTO updateInventory(InventoryDTO inventoryDTO);
 
-    void deleteInventory(String item_code);
+    boolean deleteInventory(String item_code);
 
     @ResponseBody
     CustomDTO inventoryIdGenerate();
