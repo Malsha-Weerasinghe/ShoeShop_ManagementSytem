@@ -1,8 +1,9 @@
-/*
 package lk.ijse.shoeShop.entity;
 
-import jakarta.persistence.*;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Id;
 import lk.ijse.shoeShop.util.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,18 +15,20 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.HashSet;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "user")
-public class UserEntity implements UserDetails {
+public class User implements UserDetails {
+
     @Id
-    @Column(unique = true)
     private String email;
     private String password;
+
     @Enumerated(EnumType.STRING)
     private Role role;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -47,8 +50,9 @@ public class UserEntity implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return false;
     }
+    //true
 
     @Override
     public boolean isCredentialsNonExpired() {
@@ -60,4 +64,3 @@ public class UserEntity implements UserDetails {
         return true;
     }
 }
-*/
