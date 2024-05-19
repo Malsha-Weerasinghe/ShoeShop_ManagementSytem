@@ -1,4 +1,4 @@
-package lk.ijse.shoeShop.service.util;
+package lk.ijse.shoeShop.service;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
