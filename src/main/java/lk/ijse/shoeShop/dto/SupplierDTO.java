@@ -3,27 +3,47 @@ package lk.ijse.shoeShop.dto;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lk.ijse.shoeShop.util.Category;
 import lk.ijse.shoeShop.util.Gender;
 import lk.ijse.shoeShop.util.Level;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class SupplierDTO{
-
+public class SupplierDTO {
+    @NotBlank(message = "Supplier code is required")
+    @Size(min = 1, max = 50, message = "Supplier code must be between 1 and 50 characters")
     private String supplierCode;
+
+    @NotBlank(message = "Supplier name is required")
+    @Pattern(regexp = "^[a-zA-Z]+(?:[ '-][a-zA-Z]+)*$", message = "Invalid name format")
+    @Size(min = 1, max = 100, message = "Supplier name must be between 1 and 100 characters")
     private String supplierName;
+
     private Category category;
+
+    @NotBlank(message = "Address Line 01 is required")
     private String address;
+
+ /*   private String addressLine02;
+    private String addressLine03;
+    private String addressLine04;
+    private String addressLine05;
+    private String addressLine06;*/
+
+    @NotBlank(message = "Contact No.1 is required")
+    @Pattern(regexp = "^\\+?[0-9()-]{1,11}$", message = "Invalid contact number format")
     private String contactNo1;
-    private String contactNo2;
-    private String email;
-}
+
+    @NotBlank(message = "Contact No.1 is required")
+    @Pattern(regexp = "^\\+?[0-9()-]{1,11}$", message = "Invalid contact number format")
+    private String landLineNo;
+
+    private String email;}

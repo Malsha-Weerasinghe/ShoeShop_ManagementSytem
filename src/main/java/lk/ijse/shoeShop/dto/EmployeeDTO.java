@@ -1,44 +1,66 @@
 package lk.ijse.shoeShop.dto;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lk.ijse.shoeShop.util.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class EmployeeDTO{
-    @Id
+public class EmployeeDTO {
     private String employeeCode;
+
+    @NotBlank(message = "Employee Name cannot be blank")
+    @Pattern(regexp = "^[a-zA-Z]+(?:[ '-][a-zA-Z]+)*$", message = "Invalid name format")
     private String employeeName;
-    @Column(columnDefinition = "LONGTEXT")
-    private String proPic;
-    @Enumerated(EnumType.STRING)
+
+    private String employeeProfilePic;
+
     private Gender gender;
+
+    @NotBlank(message = "Status cannot be blank")
     private String status;
-    @Enumerated(EnumType.STRING)
-    private Designation designation;
-    @Enumerated(EnumType.STRING)
-    private Role role;
-    private Date DOB;
-    private Date joinDate;
+
+    @NotBlank(message = "Designation cannot be blank")
+    private String designation;
+
+    private Role accessRole;
+
+    @NotNull(message = "Date of Birth cannot be null")
+    private java.util.Date dob;
+
+    @NotNull(message = "Date of Joining cannot be null")
+    private Date dateOfJoin;
+
     private String attachedBranch;
+
+    @NotBlank(message = "Address Line 01 cannot be blank")
     private String address;
-    private String contact;
+
+  /*  @NotBlank(message = "Address Line 02 cannot be blank")
+    private String addressLine02;
+
+    private String addressLine03;
+    private String addressLine04;
+    private String addressLine05;*/
+
+    @NotBlank(message = "Contact number cannot be blank")
+    @Pattern(regexp = "^\\+?[0-9()-]{1,11}$", message = "Invalid contact number format")
+    private String contactNo;
+
+    @NotBlank(message = "Email cannot be blank")
+    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", message = "Invalid email format")
     private String email;
-    private String guardian;
-    private String emergContact;
+
+    private String emergencyContact;
+    private String emergencyContactPerson;
 
 }

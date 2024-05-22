@@ -1,20 +1,16 @@
 package lk.ijse.shoeShop.service.impl;
 
-import lk.ijse.shoeShop.dto.CustomDTO;
 import lk.ijse.shoeShop.dto.SupplierDTO;
-import lk.ijse.shoeShop.entity.Supplier;
-import lk.ijse.shoeShop.repository.SupplierRepo;
+import lk.ijse.shoeShop.persistence.entity.Suppliers;
+import lk.ijse.shoeShop.persistence.repository.SupplierRepo;
 import lk.ijse.shoeShop.service.SupplierService;
 import lk.ijse.shoeShop.service.exception.DuplicateRecordException;
 import lk.ijse.shoeShop.service.exception.NotFoundException;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @Transactional
@@ -50,7 +46,7 @@ public class SupplierServiceImpl implements SupplierService {
             throw new DuplicateRecordException("This Supplier "+supplierDTO.getSupplierCode()+" already exicts...");
         }
         return modelMapper.map(supplierRepository.save(modelMapper.map(
-                supplierDTO, Supplier.class)), SupplierDTO.class
+                supplierDTO, Suppliers.class)), SupplierDTO.class
         );
     }
 
@@ -60,7 +56,7 @@ public class SupplierServiceImpl implements SupplierService {
             throw new NotFoundException("Supplier ID"+ id + "Not Found...");
         }
         supplierDTO.setSupplierCode(id);
-        supplierRepository.save(modelMapper.map(supplierDTO,Supplier.class));
+        supplierRepository.save(modelMapper.map(supplierDTO, Suppliers.class));
     }
 
     @Override

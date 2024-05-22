@@ -6,56 +6,69 @@ import lk.ijse.shoeShop.dto.EmployeeDTO;
 import lk.ijse.shoeShop.dto.InventoryDTO;
 import lk.ijse.shoeShop.service.CustomerService;
 import lk.ijse.shoeShop.service.InventoryService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
 
+
 @RestController
-@CrossOrigin("*")
-@RequestMapping("inventory")
+@RequestMapping("api/v0/inventory")
+@RequiredArgsConstructor
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE,RequestMethod.PATCH, RequestMethod.OPTIONS})
 public class InventoryController {
-    @Autowired
-    private InventoryService inventoryService;
+    private final InventoryService inventoryService;
 
-    public InventoryController(InventoryService inventoryService) {
-        System.out.println("Inventory Working");
-    }
-
-    @GetMapping("/getAllItems")
-    public List<InventoryDTO> getAllItems(){
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    List<InventoryDTO> getAllInventory(){
         return inventoryService.getAllInventory();
     }
 
-    @PostMapping("/save")
-    public InventoryDTO save(@RequestBody InventoryDTO inventoryDTO){
-        System.out.println(inventoryDTO);
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+    InventoryDTO saveInventory(@RequestPart("data") InventoryDTO inventoryDTO,@RequestPart("itempic") MultipartFile itempic){
+        String base64ProfilePic = null;
+        try {
+            base64ProfilePic = Base64.getEncoder().encodeToString(itempic.getBytes());
+            inventoryDTO.setItemPicture(
+                    base64ProfilePic
+            );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return inventoryService.saveInventory(inventoryDTO);
     }
 
-    @PostMapping("/update")
-    public InventoryDTO update(@RequestBody InventoryDTO inventoryDTO){
-        System.out.println(inventoryDTO);
-        return inventoryService.updateInventory(inventoryDTO);
+    @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    void updateInventory(@RequestPart("data") InventoryDTO inventoryDTO,@RequestPart("itempic") MultipartFile itempic){
+        String base64ProfilePic = null;
+        try {
+            base64ProfilePic = Base64.getEncoder().encodeToString(itempic.getBytes());
+            inventoryDTO.setItemPicture(
+                    base64ProfilePic
+            );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        inventoryService.updateInventory(inventoryDTO.getItemCode(),inventoryDTO);
     }
 
-    @DeleteMapping("/delete/{item_code}")
-    public void delete(@PathVariable("item_code") String item_code){
-        inventoryService.deleteInventory(item_code);
+    @DeleteMapping(value = "/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    void deleteInventory(@PathVariable("id") String itemCode){
+        inventoryService.deleteInventory(itemCode);
     }
 
-
-    @ResponseStatus(HttpStatus.CREATED)
-    @GetMapping(path = "/InventoryIdGenerate")
-    public @ResponseBody
-    CustomDTO inventoryIdGenerate() {
-        return inventoryService.inventoryIdGenerate();
+    @PatchMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    InventoryDTO getInventory(@PathVariable("id") String id){
+        return inventoryService.getInventoryDetails(id);
     }
-
-    /*@GetMapping("/search")
-    public List<InventoryDTO> search(@RequestParam("item_code") String item_code){
-        return inventoryService.searchInventory(item_code);
-    }*/
 }

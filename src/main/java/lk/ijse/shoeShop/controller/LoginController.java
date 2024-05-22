@@ -1,4 +1,3 @@
-/*
 package lk.ijse.shoeShop.controller;
 
 import lk.ijse.shoeShop.auth.Request.SignInRequest;
@@ -7,16 +6,13 @@ import lk.ijse.shoeShop.auth.Response.JWTAuthResponse;
 import lk.ijse.shoeShop.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("api/v0/auth")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE,RequestMethod.PATCH, RequestMethod.OPTIONS})
 public class LoginController {
-
     private final AuthenticationService authenticationService;
 
     @PostMapping("/signin")
@@ -33,5 +29,12 @@ public class LoginController {
         return ResponseEntity.ok(
                 authenticationService.signUp(signUpRequest));
     }
+
+    @PostMapping("/signupupdate")
+    public ResponseEntity<JWTAuthResponse> signUpdate(
+            @RequestBody SignUpRequest signUpRequest){
+        return ResponseEntity.ok(
+                authenticationService.signUp(signUpRequest));
+    }
 }
-*/
+

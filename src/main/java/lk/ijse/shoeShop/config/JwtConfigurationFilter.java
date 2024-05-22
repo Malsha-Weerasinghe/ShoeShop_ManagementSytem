@@ -1,4 +1,3 @@
-/*
 package lk.ijse.shoeShop.config;
 
 import jakarta.servlet.FilterChain;
@@ -21,14 +20,12 @@ import java.io.IOException;
 
 @Configuration
 @RequiredArgsConstructor
-public class JwtConfigurationFilter extends OncePerRequestFilter {
-
+public class JwtConfigurationFilter extends OncePerRequestFilter{
     private final JWTService jwtService;
     private final UserService userService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-
         String authorizationHeader = request.getHeader("Authorization"); // get the value of the Authorization header
 
         // validate Authorization header
@@ -57,20 +54,18 @@ public class JwtConfigurationFilter extends OncePerRequestFilter {
                         }else if(request.getMethod().equals("POST") & request.getRequestURI().equals("/app/api/v0/sales")){
                             System.out.println("Processing...");
                         }else{
-                        */
-/*response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                            /*response.setStatus(HttpServletResponse.SC_FORBIDDEN);
                             response.setContentType("application/json");
                             String message = "{\"error\": \"You haven't Authorization to execute this process\"}";
                             response.getWriter().write(message);
-                            return;*//*
-
+                            return;*/
                         }
                     }
                 }
             }
         }
+
         filterChain.doFilter(request,response);
     }
 }
 
-*/

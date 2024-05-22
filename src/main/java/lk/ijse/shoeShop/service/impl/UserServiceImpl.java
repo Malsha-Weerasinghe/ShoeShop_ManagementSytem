@@ -1,13 +1,13 @@
 package lk.ijse.shoeShop.service.impl;
 
 import lk.ijse.shoeShop.dto.UserDTO;
-import lk.ijse.shoeShop.entity.User;
-import lk.ijse.shoeShop.repository.UserRepo;
+import lk.ijse.shoeShop.persistence.entity.User;
+import lk.ijse.shoeShop.persistence.repository.UserRepo;
 import lk.ijse.shoeShop.service.UserService;
 import lk.ijse.shoeShop.service.exception.DuplicateRecordException;
 import lk.ijse.shoeShop.service.exception.NotFoundException;
+import lk.ijse.shoeShop.util.Role;
 import org.modelmapper.ModelMapper;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;

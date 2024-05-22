@@ -3,18 +3,17 @@ package lk.ijse.shoeShop.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class SaleDTO {
-
     private List<SalesInventoryDTO> inventory;
 
     @NotBlank(message = "Order number is required")
@@ -29,17 +28,15 @@ public class SaleDTO {
     private Double totalPrice;
 
     @NotNull(message = "Purchase date is required")
-    private LocalDateTime purchaseDate;
+    private Date purchaseDate;
 
     @NotBlank(message = "Payment method is required")
-    @Pattern(regexp = "^(cash|card)$", message = "Invalid payment method. Must be 'cash' or 'card'.")
+    @Pattern(regexp = "^(CASH|CARD)$", message = "Invalid payment method. Must be 'cash' or 'card'.")
     private String paymentMethod;
 
     private Double addedPoints;
 
-
     @NotBlank(message = "Cashier name is required")
     @Pattern(regexp = "^[a-zA-Z]+(?:[ '-][a-zA-Z]+)*$", message = "Invalid name format")
     private String cashierName;
-
 }

@@ -1,6 +1,7 @@
 package lk.ijse.shoeShop.controller;
 
 
+import jakarta.validation.Valid;
 import lk.ijse.shoeShop.dto.CustomDTO;
 import lk.ijse.shoeShop.dto.CustomerDTO;
 import lk.ijse.shoeShop.service.CustomerService;
@@ -11,66 +12,41 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("/customer")
-@CrossOrigin(origins = "*")
+@RequestMapping("api/v0/customers")
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE,RequestMethod.PATCH, RequestMethod.OPTIONS})
 public class CustomerController {
+    private final CustomerService customerService;
 
-    @Autowired
-    private CustomerService customerService;
-
-    public CustomerController() {
-        System.out.println("customer working !");
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
     }
 
-    @GetMapping("/getAllCustomers")
-    public List<CustomerDTO> getAllCustomers(){
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    List<CustomerDTO> getAllCustomer(){
         return customerService.getAllCustomers();
     }
 
-    @PostMapping("/save")
-    public CustomerDTO save(@RequestBody CustomerDTO customerDTO){
-        System.out.println(customerDTO);
-//        customerDTO.setCode(customerService.generateNextId());
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+    CustomerDTO saveCustomer(@Valid @RequestBody CustomerDTO customerDTO){
         return customerService.saveCustomer(customerDTO);
     }
 
-    @PostMapping("/update")
-    public CustomerDTO update(@RequestBody CustomerDTO customerDTO){
-        System.out.println(customerDTO);
-        return customerService.updateCustomer(customerDTO);
+    @PutMapping(value = "/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    void updateCustomer(@Valid @RequestBody CustomerDTO customerDTO,@PathVariable("id") String id){
+        customerService.updateCustomer(id,customerDTO);
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @GetMapping(path = "/CustomerIdGenerate")
-    public @ResponseBody
-    CustomDTO customerIdGenerate() {
-        return customerService.customerIdGenerate();
+    @DeleteMapping(value = "/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    void deleteCustomer(@PathVariable("id") String id){
+        customerService.deleteCustomer(id);
     }
 
-    @GetMapping("/search")
-    public List<CustomerDTO> search(@RequestParam("customerName") String customerName){
-        return customerService.searchCustomer(customerName);
-    }
-
-    @DeleteMapping("/delete/{customerCode}")
-    public void delete(@PathVariable("customerCode") String customerCode){
-        customerService.deleteCustomer(customerCode);
+    @PatchMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    CustomerDTO getCustomer(@PathVariable("id") String id){
+        return customerService.getCustomerDetails(id);
     }
 }
-/*
-
- "customerCode":"C001",
-         "customerName":"Malsha",
-         "email":"malsha@gmail.com",
-         "gender":"",
-         "contact":"75518991",
-         "dob":"",
-         "addressLine1":"aluthgedara",
-         "addressLine2":"akurugoda",
-            "addressLine3":"kamburupitiya",
-          "addressLine4":"matara",
-          "addressLine5":"southern",
-         "joinDate":"",
-         "level":"",
-         "purchaseDateTime":""
-         "loyaltyPoints":2*/

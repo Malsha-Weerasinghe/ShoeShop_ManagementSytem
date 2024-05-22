@@ -1,14 +1,12 @@
 package lk.ijse.shoeShop.service.impl;
 
-import lk.ijse.shoeShop.dto.CustomDTO;
 import lk.ijse.shoeShop.dto.CustomerDTO;
-import lk.ijse.shoeShop.entity.Customer;
-import lk.ijse.shoeShop.repository.CustomerRepo;
+import lk.ijse.shoeShop.persistence.entity.Customers;
+import lk.ijse.shoeShop.persistence.repository.CustomerRepo;
 import lk.ijse.shoeShop.service.CustomerService;
 import lk.ijse.shoeShop.service.exception.DuplicateRecordException;
 import lk.ijse.shoeShop.service.exception.NotFoundException;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,7 +46,7 @@ public class CustomerServiceImpl implements CustomerService {
         }
         customerDTO.setCustomerCode(genarateNextCustomerCode());
         return modelMapper.map(customerRepository.save(modelMapper.map(
-                customerDTO, Customer.class)), CustomerDTO.class
+                customerDTO, Customers.class)), CustomerDTO.class
         );
     }
 
@@ -58,7 +56,7 @@ public class CustomerServiceImpl implements CustomerService {
             throw new NotFoundException("Customer ID"+ id + "Not Found...");
         }
         customerDTO.setCustomerCode(id);
-        customerRepository.save(modelMapper.map(customerDTO,Customer.class));
+        customerRepository.save(modelMapper.map(customerDTO, Customers.class));
     }
 
     @Override

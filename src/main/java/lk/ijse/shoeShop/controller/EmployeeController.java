@@ -8,60 +8,77 @@ import lk.ijse.shoeShop.service.CustomerService;
 import lk.ijse.shoeShop.service.EmployeeService;
 import lk.ijse.shoeShop.util.Gender;
 import lk.ijse.shoeShop.util.Role;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Base64;
 import java.sql.Date;
 import java.util.List;
 
 
 @RestController
-@CrossOrigin("*")
-@RequestMapping("employee")
+@RequestMapping("api/v0/employees")
+@RequiredArgsConstructor
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE,RequestMethod.PATCH, RequestMethod.OPTIONS})
 public class EmployeeController {
+    private final EmployeeService employeeService;
 
-    @Autowired
-    private EmployeeService employeeService;
-
-    public EmployeeController() {
-        System.out.println("employee working !");
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    List<EmployeeDTO> getAllEmployee(){
+        return employeeService.getAllEmployees();
     }
 
-    @GetMapping("/getAllEmployees")
-    public List<EmployeeDTO> getAllEmployee(){
-        return employeeService.getAllEmployee();
-    }
-
-    @PostMapping("/save")
-    public EmployeeDTO save(@RequestBody EmployeeDTO employeeDTO){
-        System.out.println(employeeDTO);
-//        customerDTO.setCode(customerService.generateNextId());
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+    EmployeeDTO saveEmployee(@RequestPart("data") EmployeeDTO employeeDTO,@RequestPart("profilepic") MultipartFile profilepic){
+        String base64ProfilePic = null;
+        try {
+            base64ProfilePic = Base64.getEncoder().encodeToString(profilepic.getBytes());
+            employeeDTO.setEmployeeProfilePic(
+                    base64ProfilePic
+            );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return employeeService.saveEmployee(employeeDTO);
     }
 
-    @PostMapping("/update")
-    public EmployeeDTO update(@RequestBody EmployeeDTO employeeDTO){
-        System.out.println(employeeDTO);
-        return employeeService.updateEmployee(employeeDTO);
+    @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    void updateEmployee(@RequestPart("data") EmployeeDTO employeeDTO,@RequestPart("profilepic")MultipartFile profilepic){
+        String base64ProfilePic = null;
+        try {
+            base64ProfilePic = Base64.getEncoder().encodeToString(profilepic.getBytes());
+            employeeDTO.setEmployeeProfilePic(
+                    base64ProfilePic
+            );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        employeeService.updateEmployee(employeeDTO.getEmployeeCode(),employeeDTO);
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @GetMapping(path = "/EmployeeIdGenerate")
-    public @ResponseBody
-    CustomDTO customerIdGenerate() {
-        return employeeService.employeeIdGenerate();
+    @DeleteMapping(value = "/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    void deleteEmployee(@PathVariable("id") String customerCode){
+        employeeService.deleteEmployee(customerCode);
     }
 
-    @GetMapping("/search")
-    public List<EmployeeDTO> search(@RequestParam("employeeName") String employeeName){
-        return employeeService.searchEmployee(employeeName);
+    @PatchMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    EmployeeDTO getEmployee(@PathVariable("id") String id){
+        return employeeService.getEmployeeDetails(id);
     }
 
-    @DeleteMapping("/delete/{employeeCode}")
-    public void delete(@PathVariable("employeeCode") String employeeCode){
-        employeeService.deleteEmployee(employeeCode);
+    @GetMapping("/nextid")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    String getNextEmployeeCode(){
+        return employeeService.nextEmployeeCode();
     }
 }
 

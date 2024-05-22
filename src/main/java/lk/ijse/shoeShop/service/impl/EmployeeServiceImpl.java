@@ -1,18 +1,13 @@
 package lk.ijse.shoeShop.service.impl;
 
-import lk.ijse.shoeShop.dto.CustomDTO;
-import lk.ijse.shoeShop.dto.CustomerDTO;
 import lk.ijse.shoeShop.dto.EmployeeDTO;
-import lk.ijse.shoeShop.entity.Customer;
-import lk.ijse.shoeShop.entity.Employee;
-import lk.ijse.shoeShop.repository.CustomerRepo;
-import lk.ijse.shoeShop.repository.EmployeeRepo;
+import lk.ijse.shoeShop.persistence.entity.Employees;
+import lk.ijse.shoeShop.persistence.repository.CustomerRepo;
+import lk.ijse.shoeShop.persistence.repository.EmployeeRepo;
 import lk.ijse.shoeShop.service.EmployeeService;
 import lk.ijse.shoeShop.service.exception.DuplicateRecordException;
 import lk.ijse.shoeShop.service.exception.NotFoundException;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -51,7 +46,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new DuplicateRecordException("This Employee "+employeeDTO.getEmployeeCode()+" already exicts...");
         }
         return modelMapper.map(employeeRepository.save(modelMapper.map(
-                employeeDTO, Employee.class)), EmployeeDTO.class
+                employeeDTO, Employees.class)), EmployeeDTO.class
         );
     }
 
@@ -61,7 +56,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new NotFoundException("Employee ID"+ id + "Not Found...");
         }
         employeeDTO.setEmployeeCode(id);
-        employeeRepository.save(modelMapper.map(employeeDTO,Employee.class));
+        employeeRepository.save(modelMapper.map(employeeDTO, Employees.class));
     }
 
     @Override

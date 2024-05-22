@@ -1,28 +1,20 @@
 package lk.ijse.shoeShop.service.impl;
 
-import lk.ijse.shoeShop.dto.CustomDTO;
-import lk.ijse.shoeShop.dto.CustomerDTO;
-import lk.ijse.shoeShop.dto.EmployeeDTO;
 import lk.ijse.shoeShop.dto.InventoryDTO;
-import lk.ijse.shoeShop.entity.Employee;
-import lk.ijse.shoeShop.entity.Inventory;
-import lk.ijse.shoeShop.repository.InventoryRepo;
+import lk.ijse.shoeShop.persistence.entity.Inventory;
+import lk.ijse.shoeShop.persistence.repository.InventoryRepo;
 import lk.ijse.shoeShop.service.InventoryService;
 import lk.ijse.shoeShop.service.exception.DuplicateRecordException;
 import lk.ijse.shoeShop.service.exception.NotFoundException;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
 public class InventoryServiceImpl implements InventoryService {
-
     InventoryRepo inventoryRepository;
     ModelMapper modelMapper;
 

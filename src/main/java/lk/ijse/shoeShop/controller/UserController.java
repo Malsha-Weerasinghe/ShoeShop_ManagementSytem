@@ -1,9 +1,9 @@
-/*
 package lk.ijse.shoeShop.controller;
 
 import jakarta.validation.Valid;
 import lk.ijse.shoeShop.dto.UserDTO;
 import lk.ijse.shoeShop.service.UserService;
+import lk.ijse.shoeShop.util.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,14 +14,11 @@ import java.util.List;
 
 
 @RestController
-@CrossOrigin(origins = "*")
-@RequestMapping("/user")
+@RequestMapping("api/v0/user")
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE,RequestMethod.PATCH, RequestMethod.OPTIONS})
 public class UserController {
-
-    @Autowired
     private final UserService userService;
 
-    @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
@@ -43,17 +40,15 @@ public class UserController {
         userService.updateUser(userDTO.getEmail(),userDTO);
     }
 
-    @DeleteMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/{email}",consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.ACCEPTED)
-    void deleteCustomer(@RequestBody UserDTO userDTO){
-        userService.deleteUser(userDTO.getEmail());
+    void deleteCustomer(@PathVariable("email") String email){
+        userService.deleteUser(email);
     }
 
     @PatchMapping(value = "/{email}/{role}",consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.ACCEPTED)
-    UserDTO getCustomer(@PathVariable("email") String email, @PathVariable("role") String role){
+    UserDTO getCustomer(@PathVariable("email") String email, @PathVariable("role") Role role){
         return userService.getUserDetails(email ,role);
     }
-
 }
-*/

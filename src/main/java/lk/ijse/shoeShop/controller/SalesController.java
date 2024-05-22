@@ -11,12 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/sales")
-@CrossOrigin(origins = "*")
+@RequestMapping("api/v0/sales")
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE,RequestMethod.PATCH, RequestMethod.OPTIONS})
 public class SalesController {
-
-    @Autowired
-    private SaleService saleService;
+    private final SaleService saleService;
 
     public SalesController(SaleService saleService) {
         this.saleService = saleService;
@@ -30,6 +28,7 @@ public class SalesController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     SaleDTO saveSales(@Valid @RequestBody SaleDTO salesDTO){
+        System.out.println(salesDTO);
         return saleService.saveSales(salesDTO);
     }
 
@@ -38,7 +37,6 @@ public class SalesController {
     void updateSales(@Valid @RequestBody SaleDTO salesDTO){
         saleService.updateSales(salesDTO.getOrderNo(),salesDTO);
     }
-
 
     @DeleteMapping(value = "/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.ACCEPTED)

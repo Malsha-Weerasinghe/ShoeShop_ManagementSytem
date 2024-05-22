@@ -4,8 +4,9 @@ import lk.ijse.shoeShop.auth.Request.SignInRequest;
 import lk.ijse.shoeShop.auth.Request.SignUpRequest;
 import lk.ijse.shoeShop.auth.Response.JWTAuthResponse;
 import lk.ijse.shoeShop.dto.UserDTO;
-import lk.ijse.shoeShop.entity.User;
-import lk.ijse.shoeShop.repository.SecurityRepository;
+import lk.ijse.shoeShop.persistence.entity.User;
+import lk.ijse.shoeShop.persistence.repository.EmployeeRepo;
+import lk.ijse.shoeShop.persistence.repository.SecurityRepo;
 import lk.ijse.shoeShop.service.AuthenticationService;
 import lk.ijse.shoeShop.service.JWTService;
 import lk.ijse.shoeShop.service.exception.NotFoundException;
@@ -27,7 +28,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final ModelMapper mapper;
     private final JWTService jwtService;
     private final AuthenticationManager authenticationManager;
-    EmployeeRepository employeeRepository;
+    EmployeeRepo employeeRepository;
 
     @Override
     public JWTAuthResponse signIn(SignInRequest signInRequest) {

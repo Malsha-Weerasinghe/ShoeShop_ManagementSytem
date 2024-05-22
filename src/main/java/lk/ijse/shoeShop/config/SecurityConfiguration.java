@@ -1,4 +1,3 @@
-/*
 package lk.ijse.shoeShop.config;
 import lk.ijse.shoeShop.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +21,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfiguration {
-
     private final UserService userService;
     private final JwtConfigurationFilter jwtConfigurationFilter;
 
@@ -55,6 +53,4 @@ public class SecurityConfiguration {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();
     }
-
 }
-*/
