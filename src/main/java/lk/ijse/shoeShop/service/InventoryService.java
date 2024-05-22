@@ -8,15 +8,13 @@ import java.util.List;
 
 public interface InventoryService {
     List<InventoryDTO> getAllInventory();
-
+    InventoryDTO getInventoryDetails(String id);
     InventoryDTO saveInventory(InventoryDTO inventoryDTO);
+    void updateInventory(String id, InventoryDTO inventoryDTO);
+    void deleteInventory(String id);
 
-    InventoryDTO updateInventory(InventoryDTO inventoryDTO);
-
-    boolean deleteInventory(String item_code);
-
-    @ResponseBody
-    CustomDTO inventoryIdGenerate();
+   /* @ResponseBody
+    CustomDTO inventoryIdGenerate();*/
 
 
 }

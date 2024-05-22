@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 public interface EmployeeService {
+    List<EmployeeDTO> getAllEmployees();
+    EmployeeDTO getEmployeeDetails(String id);
     EmployeeDTO saveEmployee(EmployeeDTO employeeDTO);
-    EmployeeDTO updateEmployee(EmployeeDTO employeeDTO);
-    boolean deleteEmployee(String employeeCode);
-    List<EmployeeDTO> getAllEmployee();
-    List<EmployeeDTO> searchEmployee(String employeeName);
+    void updateEmployee(String id, EmployeeDTO employeeDTO);
+    void deleteEmployee(String id);
+    String nextEmployeeCode();
 
-    @ResponseBody
-    CustomDTO employeeIdGenerate();
+    /*@ResponseBody
+    CustomDTO employeeIdGenerate();*/
 }

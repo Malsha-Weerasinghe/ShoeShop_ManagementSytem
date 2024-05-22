@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 public interface CustomerService {
-    CustomerDTO saveCustomer(CustomerDTO customerDTO);
-    CustomerDTO updateCustomer(CustomerDTO customerDTO);
-    boolean deleteCustomer(String customerCode);
     List<CustomerDTO> getAllCustomers();
-    List<CustomerDTO> searchCustomer(String customerName);
+    CustomerDTO getCustomerDetails(String id);
+    CustomerDTO saveCustomer(CustomerDTO customerDTO);
+    void updateCustomer(String id, CustomerDTO customerDTO);
+    void deleteCustomer(String id);
+    String genarateNextCustomerCode();
 
-    @ResponseBody
-    CustomDTO customerIdGenerate();
+    /*@ResponseBody
+    CustomDTO customerIdGenerate();*/
 }
