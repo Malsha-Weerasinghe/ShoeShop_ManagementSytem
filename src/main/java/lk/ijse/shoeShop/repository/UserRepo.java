@@ -1,3 +1,4 @@
+/*
 package lk.ijse.shoeShop.repository;
 
 
@@ -14,3 +15,4 @@ public interface UserRepo extends JpaRepository<User,String> {
     Optional<User> findByEmail(String email);
 
 }
+*/

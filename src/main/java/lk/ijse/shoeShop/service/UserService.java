@@ -1,3 +1,4 @@
+/*
 package lk.ijse.shoeShop.service;
 
 import lk.ijse.shoeShop.dto.UserDTO;
@@ -15,3 +16,4 @@ public interface UserService extends UserDetailsService
     void updateUser(String email, UserDTO userDTO);
     void deleteUser(String email);
 }
+*/

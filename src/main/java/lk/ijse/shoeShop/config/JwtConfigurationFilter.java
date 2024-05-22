@@ -1,3 +1,4 @@
+/*
 package lk.ijse.shoeShop.config;
 
 import jakarta.servlet.FilterChain;
@@ -56,11 +57,13 @@ public class JwtConfigurationFilter extends OncePerRequestFilter {
                         }else if(request.getMethod().equals("POST") & request.getRequestURI().equals("/app/api/v0/sales")){
                             System.out.println("Processing...");
                         }else{
-                        /*response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                        */
+/*response.setStatus(HttpServletResponse.SC_FORBIDDEN);
                             response.setContentType("application/json");
                             String message = "{\"error\": \"You haven't Authorization to execute this process\"}";
                             response.getWriter().write(message);
-                            return;*/
+                            return;*//*
+
                         }
                     }
                 }
@@ -70,3 +73,4 @@ public class JwtConfigurationFilter extends OncePerRequestFilter {
     }
 }
 
+*/

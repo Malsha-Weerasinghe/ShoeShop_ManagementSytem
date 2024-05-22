@@ -1,3 +1,4 @@
+/*
 package lk.ijse.shoeShop.service.impl;
 
 import lk.ijse.shoeShop.auth.Request.SignInRequest;
@@ -47,3 +48,4 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         return JWTAuthResponse.builder().token(generatedToken).build();
     }
 }
+*/

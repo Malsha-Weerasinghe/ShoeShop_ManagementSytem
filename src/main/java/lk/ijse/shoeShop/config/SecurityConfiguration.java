@@ -1,3 +1,4 @@
+/*
 package lk.ijse.shoeShop.config;
 import lk.ijse.shoeShop.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -56,3 +57,4 @@ public class SecurityConfiguration {
     }
 
 }
+*/

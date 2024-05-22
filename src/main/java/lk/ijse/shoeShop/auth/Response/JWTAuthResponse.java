@@ -1,3 +1,4 @@
+/*
 package lk.ijse.shoeShop.auth.Response;
 
 import lombok.AllArgsConstructor;
@@ -12,3 +13,4 @@ import lombok.NoArgsConstructor;
 public class JWTAuthResponse {
     private String token;
 }
+*/

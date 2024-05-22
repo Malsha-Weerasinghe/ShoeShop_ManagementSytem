@@ -1,3 +1,4 @@
+/*
 package lk.ijse.shoeShop.controller;
 
 import jakarta.validation.Valid;
@@ -54,7 +55,5 @@ public class UserController {
         return userService.getUserDetails(email ,role);
     }
 
-
-
-
 }
+*/
