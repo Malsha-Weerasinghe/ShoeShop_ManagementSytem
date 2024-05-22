@@ -9,5 +9,5 @@ public interface AuthenticationService {
 
     JWTAuthResponse signIn(SignInRequest signInRequest);
     JWTAuthResponse signUp(SignUpRequest signUpRequest);
-    JWTAuthResponse updateaccount(SignUpRequest signUpRequest);
+    JWTAuthResponse updateAccount(SignUpRequest signUpRequest);
 }

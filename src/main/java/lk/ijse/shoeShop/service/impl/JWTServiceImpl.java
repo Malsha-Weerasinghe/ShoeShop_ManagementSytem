@@ -1,4 +1,3 @@
-/*
 package lk.ijse.shoeShop.service.impl;
 
 import io.jsonwebtoken.Claims;
@@ -71,4 +70,3 @@ public class JWTServiceImpl implements JWTService {
         return expiredDate.before(new Date());
     }
 }
-*/

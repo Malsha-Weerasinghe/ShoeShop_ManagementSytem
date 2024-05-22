@@ -1,4 +1,3 @@
-/*
 package lk.ijse.shoeShop.service.impl;
 
 import lk.ijse.shoeShop.dto.UserDTO;
@@ -23,7 +22,6 @@ public class UserServiceImpl implements UserService {
     UserRepo userRepository;
     ModelMapper modelMapper;
 
-
     public UserServiceImpl(UserRepo userRepository, ModelMapper modelMapper) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
@@ -45,7 +43,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO getUserDetails(String email, String role) {
+    public UserDTO getUserDetails(String email, Role role) {
         if(!userRepository.existsByEmail(email)){
             throw new NotFoundException("User email :"+email+" Not Found!");
         }
@@ -64,8 +62,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUser(String email, UserDTO userDTO) {
-
-        User existingUser = userRepository.findByEmailAndRole(email, String.valueOf(userDTO.getRole()));
+        User existingUser = userRepository.findByEmailAndRole(email, userDTO.getRole());
 
         if(existingUser.getPassword().isEmpty()){
             throw new NotFoundException("User email :"+ email + "Not Found...");
@@ -75,21 +72,13 @@ public class UserServiceImpl implements UserService {
         existingUser.setRole(userDTO.getRole());
 
         userRepository.save(existingUser);
-
     }
 
     @Override
     public void deleteUser(String email) {
-
         if(!userRepository.existsByEmail(email)){
             throw  new NotFoundException("User email :"+ email + "Not Found...");
         }
         userRepository.deleteByEmail(email);
     }
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
-    }
 }
-*/

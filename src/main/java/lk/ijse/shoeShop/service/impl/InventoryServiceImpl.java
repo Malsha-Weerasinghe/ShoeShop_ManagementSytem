@@ -23,57 +23,58 @@ import java.util.stream.Collectors;
 @Transactional
 public class InventoryServiceImpl implements InventoryService {
 
-    @Autowired
+    InventoryRepo inventoryRepository;
+    ModelMapper modelMapper;
 
-    private ModelMapper modelMapper;
-    @Autowired
-    private InventoryRepo inventoryRepo;
+    public InventoryServiceImpl(InventoryRepo inventoryRepository, ModelMapper modelMapper) {
+        this.inventoryRepository = inventoryRepository;
+        this.modelMapper = modelMapper;
+    }
+
     @Override
     public List<InventoryDTO> getAllInventory() {
-        List<Inventory>userList=inventoryRepo.findAll();
-        return modelMapper.map(userList,new TypeToken<List<InventoryDTO>>(){}.getType());
+        return inventoryRepository.findAll().stream().map(
+                inventory -> modelMapper.map(inventory, InventoryDTO.class)
+        ).toList();
+    }
 
+    @Override
+    public InventoryDTO getInventoryDetails(String id) {
+        if(!inventoryRepository.existsByItemCode(id)){
+            throw new NotFoundException("Inventory "+id+" Not Found!");
+        }
+        return modelMapper.map(inventoryRepository.findByItemCode(id), InventoryDTO.class);
     }
 
     @Override
     public InventoryDTO saveInventory(InventoryDTO inventoryDTO) {
-        if (inventoryRepo.existsById(inventoryDTO.getItem_code())){
-            throw new DuplicateRecordException("Inventory Id is already exists !!");
+        if(inventoryRepository.existsByItemCode(inventoryDTO.getItemCode())){
+            throw new DuplicateRecordException("This Inventory "+inventoryDTO.getItemCode()+" already exicts...");
         }
-        return modelMapper.map(inventoryRepo.save(modelMapper.map(inventoryDTO, Inventory.class)),InventoryDTO.class);
+        return modelMapper.map(inventoryRepository.save(modelMapper.map(
+                inventoryDTO, Inventory.class)), InventoryDTO.class
+        );
     }
 
     @Override
-    public InventoryDTO updateInventory(InventoryDTO inventoryDTO) {
-        if (!inventoryRepo.existsById(inventoryDTO.getItem_code())){
-            throw new NotFoundException("Can't find inventory id !!");
+    public void updateInventory(String id, InventoryDTO inventoryDTO) {
+        Inventory existingInventory = inventoryRepository.findByItemCode(id);
+
+        if(existingInventory.getItemCode().isEmpty()){
+            throw new NotFoundException("Inventory "+ id + "Not Found...");
         }
-        return modelMapper.map(inventoryRepo.save(modelMapper.map(inventoryDTO, Inventory.class)), InventoryDTO.class);
+
+        existingInventory.setItemDescription(inventoryDTO.getItemDescription());
+        existingInventory.setItemPicture(inventoryDTO.getItemPicture());
+
+        inventoryRepository.save(existingInventory);
     }
 
     @Override
-    public boolean deleteInventory(String item_code) {
-        if (!inventoryRepo.existsById(item_code)){
-            throw new NotFoundException("Can't find item id !!");
+    public void deleteInventory(String id) {
+        if(!inventoryRepository.existsByItemCode(id)){
+            throw  new NotFoundException("Inventory "+ id + "Not Found...");
         }
-        inventoryRepo.deleteById(item_code);
-        return false;
+        inventoryRepository.deleteByItemCode(id);
     }
-
-
-    @Override
-    public CustomDTO inventoryIdGenerate() {
-        return new CustomDTO(inventoryRepo.getLastIndex());
-    }
-
-    /*@Override
-    public List<InventoryDTO> searchInventory(String item_code) {
-        List<Inventory> inventoryEntities = inventoryRepo.findByItemCodeStartingWith(item_code);
-        if (inventoryEntities.isEmpty()) {
-            throw new NotFoundException("No items found with item code starting with: " + item_code);
-        }
-        return inventoryEntities.stream()
-                .map(inventory -> modelMapper.map(inventory, InventoryDTO.class))
-                .collect(Collectors.toList());
-    }*/
 }
