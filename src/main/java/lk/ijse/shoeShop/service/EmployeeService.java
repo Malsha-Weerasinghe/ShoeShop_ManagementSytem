@@ -13,7 +13,4 @@ public interface EmployeeService {
     void updateEmployee(String id, EmployeeDTO employeeDTO);
     void deleteEmployee(String id);
     String nextEmployeeCode();
-
-    /*@ResponseBody
-    CustomDTO employeeIdGenerate();*/
 }

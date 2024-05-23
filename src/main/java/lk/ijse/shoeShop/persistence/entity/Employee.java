@@ -42,7 +42,7 @@ public class Employee {
     private Role accessRole;
 
     @Column(name = "dob")
-    private java.util.Date dob;
+    private Date dob;
 
     @Column(name = "date_of_join")
     private Date dateOfJoin;
@@ -50,10 +50,10 @@ public class Employee {
     @Column(name = "attached_branch")
     private String attachedBranch;
 
-    @Column(name = "address", nullable = false)
+    @Column(name = "address_line_01")
     private String addressLine01;
 
-    @Column(name = "address_line_02", nullable = false)
+    @Column(name = "address_line_02")
     private String addressLine02;
 
     @Column(name = "address_line_03")

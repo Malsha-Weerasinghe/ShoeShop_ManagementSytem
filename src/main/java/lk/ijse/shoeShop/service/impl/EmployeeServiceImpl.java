@@ -15,7 +15,6 @@ import java.util.List;
 @Service
 @Transactional
 public class EmployeeServiceImpl implements EmployeeService {
-
     EmployeeRepo employeeRepository;
     ModelMapper modelMapper;
 
@@ -42,7 +41,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public EmployeeDTO saveEmployee(EmployeeDTO employeeDTO) {
         if(employeeRepository.existsByEmployeeCode(employeeDTO.getEmployeeCode())){
-            throw new DuplicateRecordException("This Employee "+employeeDTO.getEmployeeCode()+" already exicts...");
+            throw new DuplicateRecordException("This Employee "+employeeDTO.getEmployeeCode()+" already exists...");
         }
         return modelMapper.map(employeeRepository.save(modelMapper.map(
                 employeeDTO, Employee.class)), EmployeeDTO.class
@@ -55,7 +54,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new NotFoundException("Employee ID"+ id + "Not Found...");
         }
         employeeDTO.setEmployeeCode(id);
-        employeeRepository.save(modelMapper.map(employeeDTO, Employee.class));
+        employeeRepository.save(modelMapper.map(employeeDTO,Employee.class));
     }
 
     @Override
@@ -75,5 +74,4 @@ public class EmployeeServiceImpl implements EmployeeService {
         String nextEmployeeCode = "EM" + String.format("%03d", numericPart);
         return nextEmployeeCode;
     }
-
 }

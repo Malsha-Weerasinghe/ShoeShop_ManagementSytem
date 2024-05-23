@@ -35,7 +35,7 @@ public class EmployeeDTO {
     private Role accessRole;
 
     @NotNull(message = "Date of Birth cannot be null")
-    private java.util.Date dob;
+    private Date dob;
 
     @NotNull(message = "Date of Joining cannot be null")
     private Date dateOfJoin;
@@ -43,14 +43,14 @@ public class EmployeeDTO {
     private String attachedBranch;
 
     @NotBlank(message = "Address Line 01 cannot be blank")
-    private String address;
+    private String addressLine01;
 
-  /*  @NotBlank(message = "Address Line 02 cannot be blank")
+    @NotBlank(message = "Address Line 02 cannot be blank")
     private String addressLine02;
 
     private String addressLine03;
     private String addressLine04;
-    private String addressLine05;*/
+    private String addressLine05;
 
     @NotBlank(message = "Contact number cannot be blank")
     @Pattern(regexp = "^\\+?[0-9()-]{1,11}$", message = "Invalid contact number format")
