@@ -1,25 +1,22 @@
-package lk.ijse.shoeShop.controller;
+package lk.ijse.shoeShop.api;
 
 import jakarta.validation.Valid;
-import lk.ijse.shoeShop.dto.CustomDTO;
-import lk.ijse.shoeShop.dto.EmployeeDTO;
 import lk.ijse.shoeShop.dto.SupplierDTO;
-import lk.ijse.shoeShop.service.EmployeeService;
 import lk.ijse.shoeShop.service.SupplierService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("api/v0/suppliers")
 @CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE,RequestMethod.PATCH, RequestMethod.OPTIONS})
-public class SupplierController {
+public class SupplierAPI {
     private final SupplierService supplierService;
 
-    public SupplierController(SupplierService supplierService) {
+    public SupplierAPI(SupplierService supplierService) {
         this.supplierService = supplierService;
     }
 

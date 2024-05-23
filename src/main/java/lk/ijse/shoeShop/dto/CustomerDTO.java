@@ -1,20 +1,17 @@
 package lk.ijse.shoeShop.dto;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Null;
 import jakarta.validation.constraints.Pattern;
 import lk.ijse.shoeShop.util.Gender;
 import lk.ijse.shoeShop.util.Level;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-import java.sql.Timestamp;
+
 import java.util.Date;
 
 @Data
@@ -27,17 +24,17 @@ public class CustomerDTO {
     @Pattern(regexp = "^[a-zA-Z]+(?:[ '-][a-zA-Z]+)*$", message = "Name not valid")
     private String customerName;
     private Gender gender;
-    private java.util.Date joinDate;
+    private Date joinDate;
     private Level level;
     private int totalPoints;
-    private java.util.Date dob;
+    private Date dob;
     @NotBlank(message = "Customer Address Line 01 Cannot Be Null")
-    private String address;
+    private String addressLine01;
     @NotBlank(message = "Customer Address Line 02 Cannot Be Null")
-   /* private String addressLine02;
+    private String addressLine02;
     private String addressLine03;
     private String addressLine04;
-    private String addressLine05;*/
+    private String addressLine05;
     @NotBlank(message = "Customer Contact Number Cannot Be Null")
     @Pattern(regexp = "^\\+?[0-9()-]{1,11}$", message = "Contact Number not valid")
     private String contactNo;
@@ -46,3 +43,4 @@ public class CustomerDTO {
     private String email;
     private Date recentPurchaseDateTime;
 }
+

@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "suppliers")
-public class Suppliers {
+public class Supplier {
     @Id
     @Column(name = "supplier_code", unique = true, nullable = false)
     private String supplierCode;

@@ -16,7 +16,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "employees")
-public class Employees {
+public class Employee {
     @Id
     @Column(name = "employee_code", unique = true, nullable = false)
     private String employeeCode;

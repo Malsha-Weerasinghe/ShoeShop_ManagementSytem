@@ -1,22 +1,22 @@
-package lk.ijse.shoeShop.controller;
+package lk.ijse.shoeShop.api;
 
 import jakarta.validation.Valid;
 import lk.ijse.shoeShop.dto.SaleDTO;
 import lk.ijse.shoeShop.service.SaleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("api/v0/sales")
 @CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE,RequestMethod.PATCH, RequestMethod.OPTIONS})
-public class SalesController {
+public class SalesAPI {
     private final SaleService saleService;
 
-    public SalesController(SaleService saleService) {
+    public SalesAPI(SaleService saleService) {
         this.saleService = saleService;
     }
 

@@ -18,7 +18,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "customers")
-public class Customers {
+public class Customer {
     @Id
     @Column(name = "customer_code", unique = true, nullable = false)
     private String customerCode;
@@ -31,7 +31,7 @@ public class Customers {
     private Gender gender;
 
     @Column(name = "join_date")
-    private java.util.Date joinDate;
+    private Date joinDate;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "level", nullable = false)
@@ -41,7 +41,7 @@ public class Customers {
     private int totalPoints;
 
     @Column(name = "dob")
-    private java.util.Date dob;
+    private Date dob;
 
     @Column(name = "address_line_01")
     private String addressLine01;
@@ -66,5 +66,4 @@ public class Customers {
 
     @Column(name = "recent_purchase_date_time")
     private Date recentPurchaseDateTime;
-
 }

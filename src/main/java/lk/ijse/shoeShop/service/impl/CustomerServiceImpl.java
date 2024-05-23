@@ -1,7 +1,7 @@
 package lk.ijse.shoeShop.service.impl;
 
 import lk.ijse.shoeShop.dto.CustomerDTO;
-import lk.ijse.shoeShop.persistence.entity.Customers;
+import lk.ijse.shoeShop.persistence.entity.Customer;
 import lk.ijse.shoeShop.persistence.repository.CustomerRepo;
 import lk.ijse.shoeShop.service.CustomerService;
 import lk.ijse.shoeShop.service.exception.DuplicateRecordException;
@@ -46,7 +46,7 @@ public class CustomerServiceImpl implements CustomerService {
         }
         customerDTO.setCustomerCode(genarateNextCustomerCode());
         return modelMapper.map(customerRepository.save(modelMapper.map(
-                customerDTO, Customers.class)), CustomerDTO.class
+                customerDTO, Customer.class)), CustomerDTO.class
         );
     }
 
@@ -56,7 +56,7 @@ public class CustomerServiceImpl implements CustomerService {
             throw new NotFoundException("Customer ID"+ id + "Not Found...");
         }
         customerDTO.setCustomerCode(id);
-        customerRepository.save(modelMapper.map(customerDTO, Customers.class));
+        customerRepository.save(modelMapper.map(customerDTO, Customer.class));
     }
 
     @Override

@@ -1,15 +1,8 @@
-package lk.ijse.shoeShop.controller;
+package lk.ijse.shoeShop.api;
 
-
-import lk.ijse.shoeShop.dto.CustomDTO;
-import lk.ijse.shoeShop.dto.CustomerDTO;
 import lk.ijse.shoeShop.dto.EmployeeDTO;
-import lk.ijse.shoeShop.service.CustomerService;
 import lk.ijse.shoeShop.service.EmployeeService;
-import lk.ijse.shoeShop.util.Gender;
-import lk.ijse.shoeShop.util.Role;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -17,15 +10,15 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Base64;
-import java.sql.Date;
 import java.util.List;
+
 
 
 @RestController
 @RequestMapping("api/v0/employees")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE,RequestMethod.PATCH, RequestMethod.OPTIONS})
-public class EmployeeController {
+public class EmployeeAPI {
     private final EmployeeService employeeService;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
@@ -81,5 +74,3 @@ public class EmployeeController {
         return employeeService.nextEmployeeCode();
     }
 }
-
-

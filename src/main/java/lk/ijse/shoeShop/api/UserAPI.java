@@ -1,14 +1,12 @@
-package lk.ijse.shoeShop.controller;
+package lk.ijse.shoeShop.api;
 
 import jakarta.validation.Valid;
 import lk.ijse.shoeShop.dto.UserDTO;
 import lk.ijse.shoeShop.service.UserService;
 import lk.ijse.shoeShop.util.Role;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
 
 import java.util.List;
 
@@ -16,10 +14,10 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v0/user")
 @CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE,RequestMethod.PATCH, RequestMethod.OPTIONS})
-public class UserController {
+public class UserAPI {
     private final UserService userService;
 
-    public UserController(UserService userService) {
+    public UserAPI(UserService userService) {
         this.userService = userService;
     }
 

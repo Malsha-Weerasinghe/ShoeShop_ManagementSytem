@@ -1,8 +1,7 @@
 package lk.ijse.shoeShop.service.impl;
 
 import lk.ijse.shoeShop.dto.EmployeeDTO;
-import lk.ijse.shoeShop.persistence.entity.Employees;
-import lk.ijse.shoeShop.persistence.repository.CustomerRepo;
+import lk.ijse.shoeShop.persistence.entity.Employee;
 import lk.ijse.shoeShop.persistence.repository.EmployeeRepo;
 import lk.ijse.shoeShop.service.EmployeeService;
 import lk.ijse.shoeShop.service.exception.DuplicateRecordException;
@@ -46,7 +45,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new DuplicateRecordException("This Employee "+employeeDTO.getEmployeeCode()+" already exicts...");
         }
         return modelMapper.map(employeeRepository.save(modelMapper.map(
-                employeeDTO, Employees.class)), EmployeeDTO.class
+                employeeDTO, Employee.class)), EmployeeDTO.class
         );
     }
 
@@ -56,7 +55,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new NotFoundException("Employee ID"+ id + "Not Found...");
         }
         employeeDTO.setEmployeeCode(id);
-        employeeRepository.save(modelMapper.map(employeeDTO, Employees.class));
+        employeeRepository.save(modelMapper.map(employeeDTO, Employee.class));
     }
 
     @Override

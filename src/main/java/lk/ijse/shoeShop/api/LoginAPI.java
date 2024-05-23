@@ -1,4 +1,4 @@
-package lk.ijse.shoeShop.controller;
+package lk.ijse.shoeShop.api;
 
 import lk.ijse.shoeShop.auth.Request.SignInRequest;
 import lk.ijse.shoeShop.auth.Request.SignUpRequest;
@@ -8,11 +8,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 @RequestMapping("api/v0/auth")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE,RequestMethod.PATCH, RequestMethod.OPTIONS})
-public class LoginController {
+public class LoginAPI {
     private final AuthenticationService authenticationService;
 
     @PostMapping("/signin")
@@ -37,4 +38,3 @@ public class LoginController {
                 authenticationService.signUp(signUpRequest));
     }
 }
-

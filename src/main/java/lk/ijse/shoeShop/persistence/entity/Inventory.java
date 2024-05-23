@@ -31,7 +31,7 @@ public class Inventory {
 
     @ManyToOne
     @JoinColumn(name = "supplier_code" , referencedColumnName = "supplier_code")
-    private Suppliers supplier;
+    private Supplier supplier;
 
     @Column(name = "supplier_name", nullable = false)
     private String supplierName;

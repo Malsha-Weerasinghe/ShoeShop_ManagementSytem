@@ -1,13 +1,8 @@
-package lk.ijse.shoeShop.controller;
+package lk.ijse.shoeShop.api;
 
-
-import lk.ijse.shoeShop.dto.CustomDTO;
-import lk.ijse.shoeShop.dto.EmployeeDTO;
 import lk.ijse.shoeShop.dto.InventoryDTO;
-import lk.ijse.shoeShop.service.CustomerService;
 import lk.ijse.shoeShop.service.InventoryService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -17,12 +12,11 @@ import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
 
-
 @RestController
 @RequestMapping("api/v0/inventory")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE,RequestMethod.PATCH, RequestMethod.OPTIONS})
-public class InventoryController {
+public class InventoryAPI {
     private final InventoryService inventoryService;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
@@ -32,7 +26,7 @@ public class InventoryController {
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    InventoryDTO saveInventory(@RequestPart("data") InventoryDTO inventoryDTO,@RequestPart("itempic") MultipartFile itempic){
+    InventoryDTO saveInventory(@RequestPart("data") InventoryDTO inventoryDTO,@RequestPart("itempic")MultipartFile itempic){
         String base64ProfilePic = null;
         try {
             base64ProfilePic = Base64.getEncoder().encodeToString(itempic.getBytes());
