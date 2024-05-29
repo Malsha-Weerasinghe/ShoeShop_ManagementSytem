@@ -18,7 +18,6 @@ import java.util.List;
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
-
     UserRepo userRepository;
     ModelMapper modelMapper;
 

@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
 import java.io.Serializable;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -24,7 +25,6 @@ public class InventoryDTO {
     @Pattern(regexp = "^(International|Local)$", message = "Invalid category. Must be 'International' or 'Local'.")
     private String category;
 
-    @NotNull(message = "Size is required")
     @Pattern(regexp = "^[1-9][0-9]*$", message = "Invalid size format. Must be a positive integer.")
     private Integer size;
 
@@ -54,4 +54,6 @@ public class InventoryDTO {
     private String status;
 
     private Integer quantity;
+
+    private Integer pQuantity;
 }

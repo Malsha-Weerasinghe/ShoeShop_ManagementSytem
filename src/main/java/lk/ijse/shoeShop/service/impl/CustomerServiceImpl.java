@@ -15,7 +15,6 @@ import java.util.List;
 @Service
 @Transactional
 public class CustomerServiceImpl implements CustomerService {
-
     CustomerRepo customerRepository;
     ModelMapper modelMapper;
 
@@ -56,7 +55,7 @@ public class CustomerServiceImpl implements CustomerService {
             throw new NotFoundException("Customer ID"+ id + "Not Found...");
         }
         customerDTO.setCustomerCode(id);
-        customerRepository.save(modelMapper.map(customerDTO, Customer.class));
+        customerRepository.save(modelMapper.map(customerDTO,Customer.class));
     }
 
     @Override

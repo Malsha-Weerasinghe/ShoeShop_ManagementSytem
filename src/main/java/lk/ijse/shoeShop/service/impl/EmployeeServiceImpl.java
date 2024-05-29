@@ -41,7 +41,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public EmployeeDTO saveEmployee(EmployeeDTO employeeDTO) {
         if(employeeRepository.existsByEmployeeCode(employeeDTO.getEmployeeCode())){
-            throw new DuplicateRecordException("This Employee "+employeeDTO.getEmployeeCode()+" already exists...");
+            throw new DuplicateRecordException("This Employee "+employeeDTO.getEmployeeCode()+" already exicts...");
         }
         return modelMapper.map(employeeRepository.save(modelMapper.map(
                 employeeDTO, Employee.class)), EmployeeDTO.class

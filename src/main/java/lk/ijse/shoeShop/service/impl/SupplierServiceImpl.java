@@ -15,7 +15,6 @@ import java.util.List;
 @Service
 @Transactional
 public class SupplierServiceImpl implements SupplierService {
-
     SupplierRepo supplierRepository;
     ModelMapper modelMapper;
 
@@ -56,7 +55,7 @@ public class SupplierServiceImpl implements SupplierService {
             throw new NotFoundException("Supplier ID"+ id + "Not Found...");
         }
         supplierDTO.setSupplierCode(id);
-        supplierRepository.save(modelMapper.map(supplierDTO, Supplier.class));
+        supplierRepository.save(modelMapper.map(supplierDTO,Supplier.class));
     }
 
     @Override

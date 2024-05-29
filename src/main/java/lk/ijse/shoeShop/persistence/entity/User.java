@@ -16,10 +16,10 @@ import java.util.HashSet;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 @Entity
 @Table(name = "user")
 public class User implements UserDetails {
-
     @Id
     private String email;
     private String password;

@@ -52,7 +52,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
-    public JWTAuthResponse updateAccount(SignUpRequest signUpRequest) {
+    public JWTAuthResponse updateaccount(SignUpRequest signUpRequest) {
         if(!employeeRepository.existsByEmployeeCode(signUpRequest.getEmail())){
             throw new NotFoundException("User"+ signUpRequest.getEmail() + "Not Found...");
         }

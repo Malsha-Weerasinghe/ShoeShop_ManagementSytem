@@ -4,7 +4,6 @@ import lk.ijse.shoeShop.persistence.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-/*@Repository*/
 public interface EmployeeRepo extends JpaRepository<Employee,String> {
     //List<Employee>findAllByAndOrderByDobDesc();
     Boolean existsByEmployeeCode(String id);

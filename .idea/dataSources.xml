@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="ShoeShop/Hibernate" uuid="f0cb91c3-2409-466a-b585-f46cd59336fa">
+    <data-source source="LOCAL" name="ShoeShop/Hibernate" uuid="664422c4-f5ca-4cbb-9b50-8ca586c54577">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>

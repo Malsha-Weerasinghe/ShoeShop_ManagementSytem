@@ -12,6 +12,4 @@ public interface SupplierService {
     void updateSupplier(String id, SupplierDTO supplierDTO);
     void deleteSupplier(String id);
     String genarateNextSupplierCode();
-    /*@ResponseBody
-    CustomDTO supplierIdGenerate();*/
 }

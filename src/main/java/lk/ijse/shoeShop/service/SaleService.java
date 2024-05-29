@@ -10,4 +10,5 @@ public interface SaleService {
     SaleDTO saveSales(SaleDTO salesDTO);
     void updateSales(String id, SaleDTO salesDTO);
     void deleteSales(String id);
+    String nextOrderCode();
 }

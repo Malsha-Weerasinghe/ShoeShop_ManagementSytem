@@ -50,10 +50,10 @@ public class Employee {
     @Column(name = "attached_branch")
     private String attachedBranch;
 
-    @Column(name = "address_line_01")
+    @Column(name = "address_line_01", nullable = false)
     private String addressLine01;
 
-    @Column(name = "address_line_02")
+    @Column(name = "address_line_02", nullable = false)
     private String addressLine02;
 
     @Column(name = "address_line_03")

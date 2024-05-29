@@ -27,7 +27,7 @@ public class Supplier {
     @Column(name = "category", nullable = false)
     private Category category;
 
-    @Column(name = "address", nullable = false)
+    @Column(name = "address_line_01", nullable = false)
     private String addressLine01;
 
     @Column(name = "address_line_02")

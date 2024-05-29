@@ -1,17 +1,16 @@
 package lk.ijse.shoeShop.dto;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lk.ijse.shoeShop.util.Category;
-import lk.ijse.shoeShop.util.Gender;
-import lk.ijse.shoeShop.util.Level;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.io.Serializable;
 
 @Getter
 @Setter
@@ -30,13 +29,13 @@ public class SupplierDTO {
     private Category category;
 
     @NotBlank(message = "Address Line 01 is required")
-    private String address;
+    private String addressLine01;
 
- /*   private String addressLine02;
+    private String addressLine02;
     private String addressLine03;
     private String addressLine04;
     private String addressLine05;
-    private String addressLine06;*/
+    private String addressLine06;
 
     @NotBlank(message = "Contact No.1 is required")
     @Pattern(regexp = "^\\+?[0-9()-]{1,11}$", message = "Invalid contact number format")
@@ -46,4 +45,5 @@ public class SupplierDTO {
     @Pattern(regexp = "^\\+?[0-9()-]{1,11}$", message = "Invalid contact number format")
     private String landLineNo;
 
-    private String email;}
+    private String email;
+}
