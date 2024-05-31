@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -81,6 +85,33 @@ public class OrderController {
     public List<OrderDto> employeeSaleAllOrdersGet(@PathVariable ("mail") String empMail) {
         List<OrderDto> employeeSaleOrders = orderService.employeeSaleAllOrdersGet(empMail);
         return employeeSaleOrders;
+    }
+
+    @GetMapping
+    @RequestMapping("/mostSaleQty/{date}")
+    public int mostSaleItemQtyGet(@PathVariable ("date") String dateString){
+//        String dateString = "2024-05-23 05:30:00.000000";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
+        LocalDateTime localDateTime = LocalDateTime.parse(dateString, formatter);
+
+        // Step 2: Convert LocalDateTime to java.util.Date
+        Date dateVariable = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+
+        int mostSaleItemQty = orderService.mostSaleItemQtyGet(dateVariable);
+        return mostSaleItemQty;
+    }
+
+    @GetMapping
+    @RequestMapping("/mostSaleImg/{date}")
+    public String mostSaleItemImgGet(@PathVariable ("date") String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
+        LocalDateTime localDateTime = LocalDateTime.parse(date, formatter);
+
+        // Step 2: Convert LocalDateTime to java.util.Date
+        Date dateVariable = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+
+        String mostSaleItemImg = orderService.mostSaleItemImgGet(dateVariable);
+        return mostSaleItemImg;
     }
 
     //TODO

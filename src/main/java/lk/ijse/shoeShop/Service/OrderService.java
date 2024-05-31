@@ -4,6 +4,7 @@ package lk.ijse.shoeShop.Service;
 import lk.ijse.shoeShop.Dto.OrderDto;
 import lk.ijse.shoeShop.Dto.ReturnDto;
 
+import java.util.Date;
 import java.util.List;
 
 public interface OrderService {
@@ -19,6 +20,10 @@ public interface OrderService {
     OrderDto searchOrder(String searchOrderId);
 
     Double totalSaleGet(String date);
+
+    int mostSaleItemQtyGet(Date date);
+
+    String mostSaleItemImgGet(Date date);
 
     List<OrderDto> branchWiseOrderDetailsGet(String branch);
 

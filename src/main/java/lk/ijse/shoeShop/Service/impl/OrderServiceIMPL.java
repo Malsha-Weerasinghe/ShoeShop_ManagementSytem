@@ -56,15 +56,15 @@ public class OrderServiceIMPL implements OrderService {
         double orderTotal = qty*unitPrice;
 
         orderEntity.setTotal(orderTotal);
-       if (800<orderTotal){
+        if (800<orderTotal){
             orderEntity.setPoints(1);
             totalPoints+=1;
             customerEntity.setTotalPoints(totalPoints);
             customerRepo.save(customerEntity);
-       }
+        }
         ItemEntity itemEntity2 = orderDto.getBuyItem().get(0);
         System.out.println(itemEntity2);
-       StockEntity stockEntity = sizeRepo.getItemQty(itemEntity2.getItemCode(), String.valueOf(orderDto.getSize()));
+        StockEntity stockEntity = sizeRepo.getItemQty(itemEntity2.getItemCode(), String.valueOf(orderDto.getSize()));
         System.out.println(stockEntity.getQty());
         int i = Integer.parseInt(stockEntity.getQty());
         int x = i-orderDto.getQty();
@@ -198,6 +198,34 @@ public class OrderServiceIMPL implements OrderService {
             totalSale+=price;
         }
         return totalSale;
+    }
+
+    @Override
+    public int mostSaleItemQtyGet(Date date) {
+
+        String mostSaleItemDesc = orderRepo.findMostSaleItemDesc(date);
+        List<OrderEntity> byPurchaseDate = orderRepo.findByPurchaseDate(date);
+
+        int totalQty = 0;
+
+        for (OrderEntity orderEntity:byPurchaseDate) {
+
+            if (mostSaleItemDesc.equals(orderEntity.getItemDesc())){
+                totalQty+=orderEntity.getQty();
+            }
+
+        }
+
+        return totalQty;
+    }
+
+    @Override
+    public String mostSaleItemImgGet(Date date) {
+
+        String mostSaleItemDesc = orderRepo.findMostSaleItemDesc(date);
+        ItemEntity byItemDesc = itemRepo.findByItemDesc(mostSaleItemDesc);
+//        List<OrderEntity> byPurchaseDate = orderRepo.findByPurchaseDate(date);
+        return byItemDesc.getItemPic();
     }
 
     @Override

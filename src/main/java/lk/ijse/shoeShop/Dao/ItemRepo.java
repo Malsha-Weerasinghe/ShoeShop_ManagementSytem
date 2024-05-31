@@ -15,7 +15,9 @@ public interface ItemRepo extends JpaRepository<ItemEntity,String> {
     String getLastItemId();
 
     @Query(value = "SELECT itemSize FROM size where itemId=?1" ,nativeQuery = true )
-   List<String> selectItemHasAllSizesGet(String itemId);
+    List<String> selectItemHasAllSizesGet(String itemId);
 
+
+    ItemEntity findByItemDesc(String desc);
 
 }
