@@ -25,6 +25,7 @@ public class CustomerServiceIMPL implements CustomerService {
     @Override
     public List<CustomerDto> getAllCustomers() {
         List<CustomerDto> allCustomers = dataConvert.customerEntityListConvertCustomerDtoList(customerRepo.findAll());
+
         return allCustomers;
     }
 

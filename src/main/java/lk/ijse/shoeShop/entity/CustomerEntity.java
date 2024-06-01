@@ -44,7 +44,7 @@ public class CustomerEntity implements SuperEntity{
     @Temporal(TemporalType.DATE)
     private Date recentPurchaseDate;
 
-    @JsonIgnore // Research  This Annotation
+    @JsonIgnore // method or field that should be ignored during serialization
     @ToStringExclude
     @OneToMany(mappedBy = "customerDetails" ,targetEntity = OrderEntity.class , cascade = CascadeType.REMOVE,orphanRemoval =true)
     private List<OrderEntity> orderEntities = new ArrayList<>();

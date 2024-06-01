@@ -13,7 +13,6 @@ import java.util.List;
 public interface OrderRepo extends JpaRepository<OrderEntity,String> {
 
 
-    // TODO
     @Query(value = "SELECT itemDesc FROM orders WHERE purchaseDate = :date GROUP BY itemDesc ORDER BY COUNT(itemDesc) DESC LIMIT 1", nativeQuery = true)
     String mostSaleItemGet(@Param("date") String date);
 

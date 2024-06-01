@@ -8,4 +8,6 @@ public interface UserService {
 
     UserDetailsService userDetailsService();
     void saveUser(UserDto userDTO);
+
+    UserDto searchUser(String id);
 }

@@ -37,7 +37,7 @@ public class EmailServiceIMPL implements EmailService {
                     thread.start();
 
                 }else{
-                    System.out.println("Pukkkk...");
+                    System.out.println("not greeting");
                 }
 
 
